@@ -6,6 +6,8 @@ import { DivisionsComponent } from './components/master-data/divisions/divisions
 import { TransactionsComponent } from './components/transactions/input/transactions.component';
 import { HistoryComponent } from './components/transactions/history/history.component';
 import { ReportsComponent } from './components/reports/monthly/reports.component';
+import { DivisionReportComponent } from './components/reports/division/division.component';
+import { ItemUsageReportComponent } from './components/reports/items/items.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -16,6 +18,6 @@ export const routes: Routes = [
   { path: 'transactions', component: TransactionsComponent },
   { path: 'history', component: HistoryComponent },
   { path: 'reports/monthly', component: ReportsComponent },
-  { path: 'reports/division', component: ReportsComponent },
-  { path: 'reports/item-usage', component: ReportsComponent }
+  { path: 'reports/division', component: DivisionReportComponent },
+  { path: 'reports/item-usage', component: ItemUsageReportComponent }
 ];

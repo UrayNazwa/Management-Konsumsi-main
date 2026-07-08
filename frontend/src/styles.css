@@ -34,7 +34,7 @@ body {
 .page-title h1 {
   font-size: 1.5rem;
   font-weight: bold;
-  color: white;
+  color: #14f9d0;
 }
 
 @media (min-width: 768px) {
@@ -219,6 +219,561 @@ body {
 
 .text-red-400 {
   color: #f87171;
+}
+
+/* Report component styles */
+.report-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.report-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.report-title {
+  margin: 0;
+  font-size: 1.95rem;
+  font-weight: 700;
+  color: #14f9d0;
+  line-height: 1.1;
+}
+
+.report-subtitle {
+  margin-top: 0.25rem;
+  color: #94a3b8;
+}
+
+.report-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.section-row > div:first-child {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.section-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .section-row {
+    grid-template-columns: 1fr;
+  }
+
+  .report-controls {
+    justify-self: stretch;
+  }
+}
+
+.report-control-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 9999px;
+  padding: 0.65rem 0.9rem;
+}
+
+.report-control-label {
+  color: #94a3b8;
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.select-small,
+.report-control-select,
+.report-dropdown {
+  width: 8rem;
+  min-width: 8rem;
+}
+
+.p-select.select-small,
+.p-dropdown.select-small,
+.p-select.report-control-select,
+.p-dropdown.report-control-select,
+.p-select.report-dropdown,
+.p-dropdown.report-dropdown {
+  width: 8rem !important;
+}
+
+.p-select.select-small .p-select-label,
+.p-dropdown.select-small .p-dropdown-label,
+.p-select.report-control-select .p-select-label,
+.p-dropdown.report-control-select .p-dropdown-label,
+.p-select.report-dropdown .p-select-label,
+.p-dropdown.report-dropdown .p-dropdown-label {
+  padding: 0.75rem 1rem !important;
+  min-height: 2.5rem;
+}
+
+.report-control-group p-select,
+.report-control-group p-dropdown {
+  flex: 0 0 auto;
+}
+
+.report-control-group p-button {
+  margin-left: 0.5rem;
+}
+
+.section-header-title {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #14f9d0;
+}
+
+.select-small .p-select-label,
+.select-small .p-dropdown-label {
+  width: 100%;
+}
+
+.report-card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .report-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.report-card {
+  border-radius: 1rem;
+  border: 1px solid #334155;
+  padding: 1.5rem;
+  min-height: 9rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  background-color: #1e293b;
+}
+
+.report-card-secondary {
+  background-color: #1e293b;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.12);
+}
+
+.report-card-title {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: rgba(148, 163, 184, 0.9);
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.report-card-value {
+  color: #ffffff;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.report-card .report-card-title,
+.report-card .report-card-value {
+  margin: 0;
+}
+
+.chart-card,
+.table-card,
+.info-card,
+.section-card {
+  border-radius: 1rem;
+  border: 1px solid #334155;
+  padding: 1.25rem;
+  background-color: #1e293b;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1.5rem;
+}
+
+.detail-card {
+  display: flex;
+  flex-direction: column;
+  max-height: 22rem;
+  overflow: hidden;
+}
+
+.detail-card .table-card-header {
+  margin-bottom: 0.75rem;
+}
+
+.detail-card-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.detail-card-body .p-datatable .p-datatable-table-container,
+.detail-card-body .p-datatable .p-datatable-tablecontainer {
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: 100%;
+  overflow-y: auto !important;
+}
+
+.detail-card-body .p-datatable table {
+  width: 100%;
+}
+
+.detail-card::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.detail-card::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+.detail-card::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 9999px;
+}
+
+.detail-card {
+  scrollbar-color: #475569 #0f172a;
+  scrollbar-width: thin;
+}
+
+.chart-card-header,
+.table-card-header,
+.section-card-header {
+  margin: 0 0 1rem;
+  color: #14f9d0;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.text-muted {
+  color: #94a3b8;
+}
+
+.table-row-hover:hover {
+  background: #111827;
+}
+
+.table-cell-strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.low-stock {
+  color: #f87171;
+}
+
+.dialog-box {
+  width: 100%;
+  max-width: 36rem;
+}
+
+/* PrimeNG sidebar/panelmenu dark overrides moved from layout component styles */
+.sidebar .p-panelmenu,
+.sidebar .p-panelmenu *,
+.sidebar .p-panelmenu-panel,
+.sidebar .p-panelmenu-content,
+.sidebar .p-menuitem,
+.sidebar .p-menuitem-content,
+.sidebar .p-panelmenu-header,
+.sidebar .p-panelmenu-header:hover,
+.sidebar .p-panelmenu-header:focus,
+.sidebar .p-panelmenu-header:active,
+.sidebar .p-panelmenu-header.p-highlight,
+.sidebar .p-panelmenu-header.p-highlight:hover,
+.sidebar .p-panelmenu-header.p-highlight:focus,
+.sidebar .p-panelmenu-header.p-highlight:active,
+.sidebar .p-panelmenu-header a,
+.sidebar .p-panelmenu-header a:hover,
+.sidebar .p-panelmenu-header a:focus,
+.sidebar .p-panelmenu-header a:active,
+.sidebar .p-panelmenu-header.p-highlight a,
+.sidebar .p-panelmenu-header.p-highlight:hover,
+.sidebar .p-panelmenu-header.p-highlight:focus,
+.sidebar .p-panelmenu-header.p-highlight:active,
+.sidebar .p-menuitem-link,
+.sidebar .p-menuitem-link:hover,
+.sidebar .p-menuitem-link:focus,
+.sidebar .p-menuitem-link:active,
+.sidebar .p-menuitem-link.p-focus,
+.sidebar .p-menuitem-link.router-link-active,
+.sidebar .p-menuitem-link.router-link-active:hover,
+.sidebar .p-menuitem-link.router-link-active:focus,
+.sidebar .p-menuitem-link.router-link-active:active,
+.sidebar .p-panelmenu-header .p-menuitem-icon,
+.sidebar .p-panelmenu-header:hover .p-menuitem-icon,
+.sidebar .p-panelmenu-header:focus .p-menuitem-icon,
+.sidebar .p-panelmenu-header:active .p-menuitem-icon,
+.sidebar .p-panelmenu-header.p-highlight .p-menuitem-icon,
+.sidebar .p-panelmenu-header.p-highlight:hover .p-menuitem-icon,
+.sidebar .p-panelmenu-header.p-highlight:focus .p-menuitem-icon,
+.sidebar .p-panelmenu-header.p-highlight:active .p-menuitem-icon,
+.sidebar .p-panelmenu-header .p-menuitem-text,
+.sidebar .p-panelmenu-header:hover .p-menuitem-text,
+.sidebar .p-panelmenu-header:focus .p-menuitem-text,
+.sidebar .p-panelmenu-header:active .p-menuitem-text,
+.sidebar .p-panelmenu-header.p-highlight .p-menuitem-text,
+.sidebar .p-panelmenu-header.p-highlight:hover .p-menuitem-text,
+.sidebar .p-panelmenu-header.p-highlight:focus .p-menuitem-text,
+.sidebar .p-panelmenu-header.p-highlight:active .p-menuitem-text,
+.sidebar .p-menuitem-link .p-menuitem-icon,
+.sidebar .p-menuitem-link:hover .p-menuitem-icon,
+.sidebar .p-menuitem-link:focus .p-menuitem-icon,
+.sidebar .p-menuitem-link:active .p-menuitem-icon,
+.sidebar .p-menuitem-link.p-focus .p-menuitem-icon,
+.sidebar .p-menuitem-link.router-link-active .p-menuitem-icon,
+.sidebar .p-menuitem-link.router-link-active:hover .p-menuitem-icon,
+.sidebar .p-menuitem-link.router-link-active:focus .p-menuitem-icon,
+.sidebar .p-menuitem-link.router-link-active:active .p-menuitem-icon,
+.sidebar .p-menuitem-link .p-menuitem-text,
+.sidebar .p-menuitem-link:hover .p-menuitem-text,
+.sidebar .p-menuitem-link:focus .p-menuitem-text,
+.sidebar .p-menuitem-link:active .p-menuitem-text,
+.sidebar .p-menuitem-link.p-focus .p-menuitem-text,
+.sidebar .p-menuitem-link.router-link-active .p-menuitem-text,
+.sidebar .p-menuitem-link.router-link-active:hover .p-menuitem-text,
+.sidebar .p-menuitem-link.router-link-active:focus .p-menuitem-text,
+.sidebar .p-menuitem-link.router-link-active:active .p-menuitem-text {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.sidebar .p-panelmenu-panel {
+  margin: 0 !important;
+}
+
+.sidebar .p-panelmenu-content {
+  padding: 0 0 0.25rem 0.75rem !important;
+  border: none !important;
+}
+
+.sidebar .p-submenu-list {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.sidebar .p-menuitem {
+  margin: 0 !important;
+}
+
+.sidebar .p-panelmenu-header {
+  margin-bottom: 0.2rem !important;
+}
+
+.sidebar .p-panelmenu-header-action,
+.sidebar .p-menuitem-link {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  min-height: 2.35rem !important;
+  line-height: 1.2 !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+}
+
+.sidebar .p-panelmenu-header-action .p-menuitem-text,
+.sidebar .p-menuitem-link .p-menuitem-text,
+.sidebar .p-panelmenu-header-action .p-menuitem-icon,
+.sidebar .p-menuitem-link .p-menuitem-icon {
+  color: inherit !important;
+}
+
+.sidebar .p-panelmenu-header-action:hover,
+.sidebar .p-panelmenu-header-action:focus,
+.sidebar .p-panelmenu-header-action:focus-visible,
+.sidebar .p-menuitem-link:hover,
+.sidebar .p-menuitem-link:focus,
+.sidebar .p-menuitem-link:focus-visible,
+.sidebar .p-menuitem-link.router-link-active {
+  background: transparent !important;
+  color: #14b8a6 !important;
+}
+
+.sidebar .p-panelmenu-header,
+.sidebar .p-panelmenu-header:hover,
+.sidebar .p-panelmenu-header:focus,
+.sidebar .p-panelmenu-header:active,
+.sidebar .p-panelmenu-header.p-highlight,
+.sidebar .p-panelmenu-header.p-highlight:hover,
+.sidebar .p-panelmenu-header.p-highlight:focus,
+.sidebar .p-panelmenu-header.p-highlight:active {
+  padding: 0.6rem 0.75rem !important;
+  margin-bottom: 0.25rem !important;
+  border-radius: 0.5rem !important;
+}
+
+.sidebar .p-panelmenu-header a,
+.sidebar .p-panelmenu-header a:hover,
+.sidebar .p-panelmenu-header a:focus,
+.sidebar .p-panelmenu-header a:active,
+.sidebar .p-panelmenu-header.p-highlight a,
+.sidebar .p-panelmenu-header.p-highlight a:hover,
+.sidebar .p-panelmenu-header.p-highlight a:focus,
+.sidebar .p-panelmenu-header.p-highlight a:active {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.sidebar .p-menuitem-link,
+.sidebar .p-menuitem-link:hover,
+.sidebar .p-menuitem-link:focus,
+.sidebar .p-menuitem-link:active,
+.sidebar .p-menuitem-link.p-focus,
+.sidebar .p-menuitem-link.router-link-active,
+.sidebar .p-menuitem-link.router-link-active:hover,
+.sidebar .p-menuitem-link.router-link-active:focus,
+.sidebar .p-menuitem-link.router-link-active:active {
+  padding: 0.6rem 0.75rem !important;
+  margin-bottom: 0.25rem !important;
+  border-radius: 0.5rem !important;
+}
+
+.sidebar .p-panelmenu-header a,
+.sidebar .p-panelmenu-header .p-menuitem-icon,
+.sidebar .p-panelmenu-header .p-menuitem-text {
+  color: #14f9d0 !important;
+  font-weight: 500 !important;
+}
+
+.sidebar .p-panelmenu-header:hover a,
+.sidebar .p-panelmenu-header:hover .p-menuitem-icon,
+.sidebar .p-panelmenu-header:hover .p-menuitem-text {
+  color: #14b8a6 !important;
+}
+
+.sidebar .p-panelmenu-header.p-highlight a,
+.sidebar .p-panelmenu-header.p-highlight .p-menuitem-icon,
+.sidebar .p-panelmenu-header.p-highlight .p-menuitem-text {
+  color: #14b8a6 !important;
+}
+
+.sidebar .p-panelmenu-content .p-menuitem .p-menuitem-link,
+.sidebar .p-panelmenu-content .p-menuitem .p-menuitem-link .p-menuitem-icon,
+.sidebar .p-panelmenu-content .p-menuitem .p-menuitem-link .p-menuitem-text {
+  color: #14f9d0 !important;
+}
+
+.sidebar .p-panelmenu-content .p-menuitem .p-menuitem-link:hover,
+.sidebar .p-panelmenu-content .p-menuitem .p-menuitem-link:hover .p-menuitem-icon,
+.sidebar .p-panelmenu-content .p-menuitem .p-menuitem-link:hover .p-menuitem-text {
+  color: #14b8a6 !important;
+}
+
+.sidebar .p-panelmenu-content .p-menuitem .p-menuitem-link.router-link-active,
+.sidebar .p-panelmenu-content .p-menuitem .p-menuitem-link.router-link-active .p-menuitem-icon,
+.sidebar .p-panelmenu-content .p-menuitem .p-menuitem-link.router-link-active .p-menuitem-text {
+  color: #14b8a6 !important;
+}
+
+.sidebar .p-panelmenu-content {
+  padding-left: 1rem !important;
+  padding-top: 0.25rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+.sidebar .p-panelmenu-header .p-menuitem-icon,
+.sidebar .p-menuitem-link .p-menuitem-icon {
+  margin-right: 0.75rem !important;
+  font-size: 1.1rem !important;
+}
+
+.sidebar .p-panelmenu-header.sidebar-leaf-item + .p-panelmenu-content-container {
+  display: none !important;
+  max-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+.sidebar .p-panelmenu-header .p-panelmenu-header-label,
+.sidebar .p-panelmenu-header .p-panelmenu-header-link,
+.sidebar .p-panelmenu-header .p-panelmenu-header-icon {
+  color: #ffffff !important;
+}
+
+.sidebar .p-panelmenu-header:hover .p-panelmenu-header-label,
+.sidebar .p-panelmenu-header:hover .p-panelmenu-header-icon,
+.sidebar .p-panelmenu-header:hover .p-panelmenu-header-link {
+  color: #14b8a6 !important;
+}
+
+.sidebar .p-panelmenu-header.p-panelmenu-header-active .p-panelmenu-header-label,
+.sidebar .p-panelmenu-header.p-panelmenu-header-active .p-panelmenu-header-icon,
+.sidebar .p-panelmenu-header.p-panelmenu-header-active .p-panelmenu-header-link {
+  color: #14b8a6 !important;
+}
+
+.sidebar .p-panelmenu-content .p-panelmenu-item-link,
+.sidebar .p-panelmenu-content .p-panelmenu-item-link .p-panelmenu-item-icon,
+.sidebar .p-panelmenu-content .p-panelmenu-item-link .p-panelmenu-item-label {
+  color: #ffffff !important;
+}
+
+.sidebar .p-panelmenu-content .p-panelmenu-item-link:hover,
+.sidebar .p-panelmenu-content .p-panelmenu-item-link:hover .p-panelmenu-item-icon,
+.sidebar .p-panelmenu-content .p-panelmenu-item-link:hover .p-panelmenu-item-label,
+.sidebar .p-panelmenu-content .p-panelmenu-item-link:focus,
+.sidebar .p-panelmenu-content .p-panelmenu-item-link:focus .p-panelmenu-item-icon,
+.sidebar .p-panelmenu-content .p-panelmenu-item-link:focus .p-panelmenu-item-label,
+.sidebar .p-panelmenu-content .p-panelmenu-item-link:active,
+.sidebar .p-panelmenu-content .p-panelmenu-item-link:active .p-panelmenu-item-icon,
+.sidebar .p-panelmenu-content .p-panelmenu-item-link:active .p-panelmenu-item-label,
+.sidebar .p-panelmenu-content .p-panelmenu-item-link.p-panelmenu-item-link-active,
+.sidebar .p-panelmenu-content .p-panelmenu-item-link.p-panelmenu-item-link-active .p-panelmenu-item-icon,
+.sidebar .p-panelmenu-content .p-panelmenu-item-link.p-panelmenu-item-link-active .p-panelmenu-item-label {
+  color: #14b8a6 !important;
+}
+
+.section-header-subtitle {
+  margin-top: 0.25rem;
+  color: #94a3b8;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .info-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.info-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.info-label {
+  color: #94a3b8;
+  font-size: 0.875rem;
+}
+
+.info-value {
+  color: #ffffff;
+  font-size: 1.75rem;
+  font-weight: 700;
 }
 
 /* Global PrimeNG Reset - Remove All White Borders/Backgrounds */
@@ -723,11 +1278,11 @@ textarea,
    Default WHITE, Hover/Active TEAL!
    ================================ */
 
-/* Menu Headers: Default WHITE */
+/* Menu Headers: Default ACCENT */
 .sidebar .p-panelmenu-header a,
 .sidebar .p-panelmenu-header .p-menuitem-icon,
 .sidebar .p-panelmenu-header .p-menuitem-text {
-  color: #ffffff !important;
+  color: #14f9d0 !important;
   font-weight: 500 !important;
 }
 

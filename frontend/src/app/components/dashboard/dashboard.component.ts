@@ -44,14 +44,14 @@ interface YearOption {
               [options]="monthOptions"
               [(ngModel)]="selectedMonth"
               (onChange)="loadData()"
-              styleClass="w-32"
+              styleClass="select-small"
               appendTo="body"
             ></p-select>
           <p-select
               [options]="yearOptions"
               [(ngModel)]="selectedYear"
               (onChange)="loadData()"
-              styleClass="w-32"
+              styleClass="select-small"
               appendTo="body"
             ></p-select>
         </div>
@@ -150,7 +150,7 @@ interface YearOption {
     .header-title h1 {
       font-size: 1.875rem;
       font-weight: bold;
-      color: white;
+      color: #14f9d0;
       margin: 0;
     }
 
@@ -162,6 +162,10 @@ interface YearOption {
     .selector-group {
       display: flex;
       gap: 0.75rem;
+    }
+
+    .select-small {
+      width: 8rem;
     }
 
     .stats-grid {

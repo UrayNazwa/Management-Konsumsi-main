@@ -111,12 +111,14 @@ export class LayoutComponent implements OnInit, OnDestroy {
     {
       label: 'Dashboard',
       icon: 'pi pi-chart-bar',
-      routerLink: '/dashboard'
+      routerLink: '/dashboard',
+      styleClass: 'sidebar-leaf-item'
     },
     {
       label: 'Master Data',
       icon: 'pi pi-database',
       expanded: false,
+      styleClass: 'sidebar-parent-item',
       items: [
         { label: 'Kategori', icon: 'pi pi-tags', routerLink: '/categories' },
         { label: 'Barang', icon: 'pi pi-box', routerLink: '/items' },
@@ -127,6 +129,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
       label: 'Transaksi',
       icon: 'pi pi-shopping-cart',
       expanded: false,
+      styleClass: 'sidebar-parent-item',
       items: [
         { label: 'Input Konsumsi', icon: 'pi pi-file-edit', routerLink: '/transactions' },
         { label: 'Riwayat', icon: 'pi pi-history', routerLink: '/history' }
@@ -136,6 +139,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
       label: 'Laporan',
       icon: 'pi pi-chart-pie',
       expanded: false,
+      styleClass: 'sidebar-parent-item',
       items: [
         { label: 'Pengeluaran Bulanan', icon: 'pi pi-chart-line', routerLink: '/reports/monthly' },
         { label: 'Per Divisi', icon: 'pi pi-building', routerLink: '/reports/division' },
