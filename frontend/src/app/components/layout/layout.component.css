@@ -1,0 +1,384 @@
+/* Layout Styles */
+.app-container {
+  display: flex;
+  height: 100vh;
+  background-color: #0f172a;
+  overflow: hidden;
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 40;
+}
+
+.sidebar {
+  background-color: #1e293b;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.sidebar-mobile {
+  width: 256px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 50;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.sidebar-mobile.sidebar-open {
+  transform: translateX(0);
+}
+
+.sidebar-desktop {
+  width: 256px;
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .sidebar-desktop {
+    display: flex;
+  }
+
+  .sidebar-overlay,
+  .sidebar-mobile {
+    display: none;
+  }
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  padding: 0.5rem;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo-circle {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #2dd4bf, #0891b2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-text {
+  color: white;
+  font-weight: bold;
+}
+
+.logo-title h1 {
+  font-size: 1.125rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.logo-title p {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.sidebar-menu {
+  width: 100%;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  border-top: 1px solid #334155;
+  padding-top: 1rem;
+}
+
+.sidebar-footer p {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.main-header {
+  background-color: #1e293b;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #334155;
+  padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  .main-header {
+    padding: 1rem 2rem;
+  }
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.header-left h2 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .header-left h2 {
+    font-size: 1.25rem;
+  }
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #2dd4bf, #0891b2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .user-avatar {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.user-avatar span {
+  color: white;
+  font-size: 0.875rem;
+  font-weight: bold;
+}
+
+.content-area {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+@media (min-width: 768px) {
+  .content-area {
+    padding: 1.5rem 2rem;
+  }
+}
+
+/* ================================
+   ABSOLUTE MAXIMUM SPECIFICITY:
+   OVERRIDE EVERY POSSIBLE PRIMENG STATE!
+   ================================ */
+
+/* Force NO BACKGROUND CHANGE in ANY STATE */
+::ng-deep .sidebar .p-panelmenu,
+::ng-deep .sidebar .p-panelmenu *,
+::ng-deep .sidebar .p-panelmenu-panel,
+::ng-deep .sidebar .p-panelmenu-content,
+::ng-deep .sidebar .p-menuitem,
+::ng-deep .sidebar .p-menuitem-content,
+::ng-deep .sidebar .p-panelmenu-header,
+::ng-deep .sidebar .p-panelmenu-header:hover,
+::ng-deep .sidebar .p-panelmenu-header:focus,
+::ng-deep .sidebar .p-panelmenu-header:active,
+::ng-deep .sidebar .p-panelmenu-header.p-highlight,
+::ng-deep .sidebar .p-panelmenu-header.p-highlight:hover,
+::ng-deep .sidebar .p-panelmenu-header.p-highlight:focus,
+::ng-deep .sidebar .p-panelmenu-header.p-highlight:active,
+::ng-deep .sidebar .p-panelmenu-header a,
+::ng-deep .sidebar .p-panelmenu-header a:hover,
+::ng-deep .sidebar .p-panelmenu-header a:focus,
+::ng-deep .sidebar .p-panelmenu-header a:active,
+::ng-deep .sidebar .p-panelmenu-header.p-highlight a,
+::ng-deep .sidebar .p-panelmenu-header.p-highlight a:hover,
+::ng-deep .sidebar .p-panelmenu-header.p-highlight a:focus,
+::ng-deep .sidebar .p-panelmenu-header.p-highlight a:active,
+::ng-deep .sidebar .p-menuitem-link,
+::ng-deep .sidebar .p-menuitem-link:hover,
+::ng-deep .sidebar .p-menuitem-link:focus,
+::ng-deep .sidebar .p-menuitem-link:active,
+::ng-deep .sidebar .p-menuitem-link.p-focus,
+::ng-deep .sidebar .p-menuitem-link.router-link-active,
+::ng-deep .sidebar .p-menuitem-link.router-link-active:hover,
+::ng-deep .sidebar .p-menuitem-link.router-link-active:focus,
+::ng-deep .sidebar .p-menuitem-link.router-link-active:active,
+::ng-deep .sidebar .p-panelmenu-header .p-menuitem-icon,
+::ng-deep .sidebar .p-panelmenu-header:hover .p-menuitem-icon,
+::ng-deep .sidebar .p-panelmenu-header:focus .p-menuitem-icon,
+::ng-deep .sidebar .p-panelmenu-header:active .p-menuitem-icon,
+::ng-deep .sidebar .p-panelmenu-header.p-highlight .p-menuitem-icon,
+::ng-deep .sidebar .p-panelmenu-header.p-highlight:hover .p-menuitem-icon,
+::ng-deep .sidebar .p-panelmenu-header.p-highlight:focus .p-menuitem-icon,
+::ng-deep .sidebar .p-panelmenu-header.p-highlight:active .p-menuitem-icon,
+::ng-deep .sidebar .p-panelmenu-header .p-menuitem-text,
+::ng-deep .sidebar .p-panelmenu-header:hover .p-menuitem-text,
+::ng-deep .sidebar .p-panelmenu-header:focus .p-menuitem-text,
+::ng-deep .sidebar .p-panelmenu-header:active .p-menuitem-text,
+::ng-deep .sidebar .p-panelmenu-header.p-highlight .p-menuitem-text,
+::ng-deep .sidebar .p-panelmenu-header.p-highlight:hover .p-menuitem-text,
+::ng-deep .sidebar .p-panelmenu-header.p-highlight:focus .p-menuitem-text,
+::ng-deep .sidebar .p-panelmenu-header.p-highlight:active .p-menuitem-text,
+::ng-deep .sidebar .p-menuitem-link .p-menuitem-icon,
+::ng-deep .sidebar .p-menuitem-link:hover .p-menuitem-icon,
+::ng-deep .sidebar .p-menuitem-link:focus .p-menuitem-icon,
+::ng-deep .sidebar .p-menuitem-link:active .p-menuitem-icon,
+::ng-deep .sidebar .p-menuitem-link.p-focus .p-menuitem-icon,
+::ng-deep .sidebar .p-menuitem-link.router-link-active .p-menuitem-icon,
+::ng-deep .sidebar .p-menuitem-link.router-link-active:hover .p-menuitem-icon,
+::ng-deep .sidebar .p-menuitem-link.router-link-active:focus .p-menuitem-icon,
+::ng-deep .sidebar .p-menuitem-link.router-link-active:active .p-menuitem-icon,
+::ng-deep .sidebar .p-menuitem-link .p-menuitem-text,
+::ng-deep .sidebar .p-menuitem-link:hover .p-menuitem-text,
+::ng-deep .sidebar .p-menuitem-link:focus .p-menuitem-text,
+::ng-deep .sidebar .p-menuitem-link:active .p-menuitem-text,
+::ng-deep .sidebar .p-menuitem-link.p-focus .p-menuitem-text,
+::ng-deep .sidebar .p-menuitem-link.router-link-active .p-menuitem-text,
+::ng-deep .sidebar .p-menuitem-link.router-link-active:hover .p-menuitem-text,
+::ng-deep .sidebar .p-menuitem-link.router-link-active:focus .p-menuitem-text,
+::ng-deep .sidebar .p-menuitem-link.router-link-active:active .p-menuitem-text {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Force ALL MENU HEADERS to use EXACT SAME PADDING in EVERY STATE */
+::ng-deep .sidebar .p-panelmenu-header,
+::ng-deep .sidebar .p-panelmenu-header:hover,
+::ng-deep .sidebar .p-panelmenu-header:focus,
+::ng-deep .sidebar .p-panelmenu-header:active,
+::ng-deep .sidebar .p-panelmenu-header.p-highlight,
+::ng-deep .sidebar .p-panelmenu-header.p-highlight:hover,
+::ng-deep .sidebar .p-panelmenu-header.p-highlight:focus,
+::ng-deep .sidebar .p-panelmenu-header.p-highlight:active {
+  padding: 0.6rem 0.75rem !important;
+  margin-bottom: 0.25rem !important;
+  border-radius: 0.5rem !important;
+}
+
+/* Force HEADER LINKS to have NO PADDING CHANGE */
+::ng-deep .sidebar .p-panelmenu-header a,
+::ng-deep .sidebar .p-panelmenu-header a:hover,
+::ng-deep .sidebar .p-panelmenu-header a:focus,
+::ng-deep .sidebar .p-panelmenu-header a:active,
+::ng-deep .sidebar .p-panelmenu-header.p-highlight a,
+::ng-deep .sidebar .p-panelmenu-header.p-highlight a:hover,
+::ng-deep .sidebar .p-panelmenu-header.p-highlight a:focus,
+::ng-deep .sidebar .p-panelmenu-header.p-highlight a:active {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Force SUBMENU ITEMS to use EXACT SAME PADDING in EVERY STATE */
+::ng-deep .sidebar .p-menuitem-link,
+::ng-deep .sidebar .p-menuitem-link:hover,
+::ng-deep .sidebar .p-menuitem-link:focus,
+::ng-deep .sidebar .p-menuitem-link:active,
+::ng-deep .sidebar .p-menuitem-link.p-focus,
+::ng-deep .sidebar .p-menuitem-link.router-link-active,
+::ng-deep .sidebar .p-menuitem-link.router-link-active:hover,
+::ng-deep .sidebar .p-menuitem-link.router-link-active:focus,
+::ng-deep .sidebar .p-menuitem-link.router-link-active:active {
+  padding: 0.6rem 0.75rem !important;
+  margin-bottom: 0.25rem !important;
+  border-radius: 0.5rem !important;
+}
+
+/* ================================
+   ONLY TEXT COLOR CHANGES:
+   Default WHITE, Hover/Active TEAL!
+   ================================ */
+
+/* Menu Headers: Default WHITE */
+::ng-deep .sidebar .p-panelmenu-header a,
+::ng-deep .sidebar .p-panelmenu-header .p-menuitem-icon,
+::ng-deep .sidebar .p-panelmenu-header .p-menuitem-text {
+  color: #ffffff !important;
+  font-weight: 500 !important;
+}
+
+/* Menu Headers: Hover TEAL */
+::ng-deep .sidebar .p-panelmenu-header:hover a,
+::ng-deep .sidebar .p-panelmenu-header:hover .p-menuitem-icon,
+::ng-deep .sidebar .p-panelmenu-header:hover .p-menuitem-text {
+  color: #14b8a6 !important;
+}
+
+/* Menu Headers: Active (has active submenu) TEAL */
+::ng-deep .sidebar .p-panelmenu-header.p-highlight a,
+::ng-deep .sidebar .p-panelmenu-header.p-highlight .p-menuitem-icon,
+::ng-deep .sidebar .p-panelmenu-header.p-highlight .p-menuitem-text {
+  color: #14b8a6 !important;
+}
+
+/* Submenu Items: DEFAULT WHITE (MAX SPECIFICITY) */
+::ng-deep .sidebar .p-panelmenu-content .p-menuitem .p-menuitem-link,
+::ng-deep .sidebar .p-panelmenu-content .p-menuitem .p-menuitem-link .p-menuitem-icon,
+::ng-deep .sidebar .p-panelmenu-content .p-menuitem .p-menuitem-link .p-menuitem-text {
+  color: #ffffff !important;
+}
+
+/* Submenu Items: HOVER TEAL (MAX SPECIFICITY) */
+::ng-deep .sidebar .p-panelmenu-content .p-menuitem .p-menuitem-link:hover,
+::ng-deep .sidebar .p-panelmenu-content .p-menuitem .p-menuitem-link:hover .p-menuitem-icon,
+::ng-deep .sidebar .p-panelmenu-content .p-menuitem .p-menuitem-link:hover .p-menuitem-text {
+  color: #14b8a6 !important;
+}
+
+/* Submenu Items: ACTIVE TEAL (MAX SPECIFICITY) */
+::ng-deep .sidebar .p-panelmenu-content .p-menuitem .p-menuitem-link.router-link-active,
+::ng-deep .sidebar .p-panelmenu-content .p-menuitem .p-menuitem-link.router-link-active .p-menuitem-icon,
+::ng-deep .sidebar .p-panelmenu-content .p-menuitem .p-menuitem-link.router-link-active .p-menuitem-text {
+  color: #14b8a6 !important;
+}
+
+/* Submenu Content Padding */
+::ng-deep .sidebar .p-panelmenu-content {
+  padding-left: 1rem !important;
+  padding-top: 0.25rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+/* Icon Spacing */
+::ng-deep .sidebar .p-panelmenu-header .p-menuitem-icon,
+::ng-deep .sidebar .p-menuitem-link .p-menuitem-icon {
+  margin-right: 0.75rem !important;
+  font-size: 1.1rem !important;
+}

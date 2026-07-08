@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+.env.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Backend
+backend/data/*.db
+backend/data/*.db-shm
+backend/data/*.db-wal
+!backend/data/.gitkeep
+
+# Frontend
+frontend/.angular/
+frontend/dist/

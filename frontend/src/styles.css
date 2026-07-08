@@ -1,0 +1,782 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #0f172a;
+  color: #e2e8f0;
+}
+
+/* General Layout Classes */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.page-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .page-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.page-title h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .page-title h1 {
+    font-size: 1.875rem;
+  }
+}
+
+.page-title p {
+  color: #94a3b8;
+  margin-top: 0.25rem;
+}
+
+.card-container {
+  background-color: #1e293b;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 1px solid #334155;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.text-slate-200 {
+  color: #e2e8f0;
+}
+
+.text-slate-300 {
+  color: #cbd5e1;
+}
+
+.text-slate-400 {
+  color: #94a3b8;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #cbd5e1;
+  margin-bottom: 0.5rem;
+}
+
+.form-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #334155;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.text-orange-500 {
+  color: #f97316;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .form-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.stat-card {
+  background-color: #1e293b;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 1px solid #334155;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card-label {
+  font-size: 0.875rem;
+  color: #94a3b8;
+  margin: 0 0 0.25rem 0;
+}
+
+.stat-card-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.text-teal-500 {
+  color: #14b8a6;
+}
+
+.text-blue-500 {
+  color: #3b82f6;
+}
+
+.text-purple-500 {
+  color: #a855f7;
+}
+
+.badge-teal {
+  padding: 0.25rem 0.75rem;
+  background-color: rgba(20, 184, 166, 0.2);
+  color: #2dd4bf;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 4rem;
+  background-color: #1e293b;
+  border-radius: 1rem;
+  border: 1px solid #334155;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.empty-state-icon {
+  font-size: 6rem;
+  color: rgba(20, 184, 166, 0.5);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.empty-state-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: white;
+  margin: 0 0 0.5rem 0;
+}
+
+.empty-state-description {
+  color: #94a3b8;
+  margin: 0 0 1rem 0;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .filter-group {
+    width: auto;
+  }
+}
+
+.filter-label {
+  color: #cbd5e1;
+  font-weight: 500;
+}
+
+.text-red-400 {
+  color: #f87171;
+}
+
+/* Global PrimeNG Reset - Remove All White Borders/Backgrounds */
+.p-component,
+.p-component * {
+  border-color: #334155 !important;
+}
+
+/* Force dark background on all PrimeNG form elements */
+.p-inputtext,
+.p-inputtextarea,
+.p-inputnumber,
+.p-inputnumber-input,
+.p-dropdown,
+.p-dropdown-panel,
+.p-dropdown-items,
+.p-select,
+.p-select-panel,
+.p-select-items,
+.p-datepicker,
+.p-datepicker table,
+.p-datepicker-header,
+.p-dialog,
+.p-dialog-header,
+.p-dialog-content,
+.p-dialog-footer,
+.p-datatable,
+.p-datatable-thead > tr > th,
+.p-datatable-tbody > tr,
+.p-datatable-tbody > tr > td,
+.p-datatable-footer,
+.p-datatable-footer > tr > td {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+}
+
+/* Fix dropdown trigger background */
+.p-dropdown .p-dropdown-trigger {
+  background-color: #334155 !important;
+  border-left: 1px solid #475569 !important;
+  color: #94a3b8 !important;
+}
+
+/* InputNumber - match input text styling */
+.p-inputnumber {
+  width: 100% !important;
+}
+
+.p-inputnumber-input {
+  background-color: #1e293b !important;
+  border: 1px solid #475569 !important;
+  border-radius: 8px !important;
+  color: #e2e8f0 !important;
+  padding: 0.75rem 1rem !important;
+  height: auto !important;
+  font-size: 1rem !important;
+  width: 100% !important;
+}
+
+.p-inputnumber-button {
+  background-color: #334155 !important;
+  border: 1px solid #475569 !important;
+  color: #94a3b8 !important;
+  border-left: 0 !important;
+  border-radius: 0 8px 8px 0 !important;
+}
+
+.p-inputnumber-button:hover {
+  background-color: #475569 !important;
+  color: #e2e8f0 !important;
+}
+
+
+/* Fix datepicker for PrimeNG 21 */
+.p-datepicker,
+.p-datepicker-panel,
+.p-datepicker .p-datepicker-group,
+.p-datepicker .p-datepicker-calendar-container {
+  background-color: #1e293b !important;
+  border: 1px solid #475569 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Remove all white borders/outlines from datepicker */
+.p-datepicker *,
+.p-datepicker-panel * {
+  border-color: #475569 !important;
+  outline: none !important;
+}
+
+/* Fix datepicker trigger icon background (the calendar button) */
+.p-datepicker .p-button,
+.p-datepicker .p-inputgroup-addon,
+.p-datepicker .p-datepicker-trigger {
+  background-color: #1e293b !important;
+  border: 1px solid #475569 !important;
+  border-left: 0 !important;
+  color: #94a3b8 !important;
+}
+
+.p-datepicker .p-button:hover,
+.p-datepicker .p-inputgroup-addon:hover,
+.p-datepicker .p-datepicker-trigger:hover {
+  color: #14b8a6 !important;
+  background-color: #1e293b !important;
+}
+
+/* Datepicker header */
+.p-datepicker-header {
+  background-color: #1e293b !important;
+  border-bottom: 1px solid #475569 !important;
+  color: #fff !important;
+}
+
+.p-datepicker-title {
+  color: #fff !important;
+}
+
+/* Datepicker navigation buttons */
+.p-datepicker-prev,
+.p-datepicker-next,
+.p-datepicker-buttonbar button {
+  color: #fff !important;
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.p-datepicker-prev:hover,
+.p-datepicker-next:hover,
+.p-datepicker-buttonbar button:hover {
+  background-color: #334155 !important;
+  color: #14b8a6 !important;
+}
+
+/* Calendar days */
+.p-datepicker-calendar th {
+  color: #94a3b8 !important;
+  background-color: #1e293b !important;
+}
+
+.p-datepicker-calendar td span {
+  color: #fff !important;
+  background-color: transparent !important;
+}
+
+.p-datepicker-calendar td span:hover {
+  background-color: #334155 !important;
+}
+
+.p-datepicker-calendar td.p-datepicker-today span {
+  background-color: rgba(20, 184, 166, 0.2) !important;
+  color: #14b8a6 !important;
+}
+
+.p-datepicker-calendar td.p-datepicker-selected span {
+  background-color: #14b8a6 !important;
+  color: #fff !important;
+}
+
+/* Fix datepicker input */
+.p-datepicker .p-inputtext {
+  background-color: #1e293b !important;
+  color: #fff !important;
+  border: 1px solid #475569 !important;
+}
+
+
+/* Fix PanelMenu spacing */
+.p-panelmenu .p-panelmenu-header,
+.p-panelmenu .p-panelmenu-content,
+.p-panelmenu .p-menuitem {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.p-panelmenu .p-panelmenu-content {
+  padding-left: 1rem !important;
+}
+
+/* Dark theme for PrimeNG */
+.p-datatable {
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2) !important;
+}
+
+.p-datatable-wrapper {
+  border-radius: 12px !important;
+}
+
+.p-datatable-thead > tr > th {
+  border-bottom: 1px solid #334155 !important;
+  font-weight: 600 !important;
+  padding: 1rem 1.25rem !important;
+  color: #94a3b8 !important;
+}
+
+.p-datatable-tbody > tr {
+  border-bottom: 1px solid #334155 !important;
+}
+
+.p-datatable-tbody > tr:hover {
+  background-color: #334155 !important;
+}
+
+.p-datatable-tbody > tr > td {
+  padding: 1rem 1.25rem !important;
+}
+
+.p-datatable-footer,
+.p-datatable-footer > tr,
+.p-datatable-footer > tr > td,
+.p-datatable .p-datatable-footer,
+.p-datatable .p-datatable-footer tr,
+.p-datatable .p-datatable-footer tr td,
+.p-datatable-tfoot,
+.p-datatable-tfoot > tr,
+.p-datatable-tfoot > tr > td,
+.p-datatable .p-datatable-tfoot,
+.p-datatable .p-datatable-tfoot tr,
+.p-datatable .p-datatable-tfoot tr td {
+  background-color: #0f172a !important;
+  background: #0f172a !important;
+  border-top: 1px solid #334155 !important;
+  color: #e2e8f0 !important;
+}
+
+/* Styling input lebih jelas */
+textarea,
+.p-inputtext,
+.p-inputtextarea,
+.p-inputnumber {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+  border: 1px solid #475569 !important;
+  border-radius: 8px !important;
+}
+
+.p-inputtext::placeholder,
+.p-inputtextarea::placeholder {
+  color: #64748b !important;
+}
+
+/* Select Dropdown */
+.p-dropdown,
+.p-select {
+  border: 1px solid #475569 !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
+  background-color: #1e293b !important;
+}
+
+.p-dropdown .p-dropdown-label,
+.p-dropdown .p-dropdown-label::placeholder,
+.p-select .p-select-label,
+.p-select .p-select-label::placeholder {
+  color: #ffffff !important;
+}
+
+.p-dropdown-panel,
+.p-select-panel {
+  background-color: #1e293b !important;
+  border: 1px solid #475569 !important;
+  border-radius: 8px !important;
+}
+
+.p-dropdown-items,
+.p-select-items {
+  background-color: #1e293b !important;
+}
+
+.p-dropdown-item,
+.p-select-item {
+  color: #ffffff !important;
+  background-color: #1e293b !important;
+}
+
+.p-dropdown-item:hover,
+.p-select-item:hover {
+  background-color: #334155 !important;
+}
+
+.p-dropdown-item.p-highlight,
+.p-select-item.p-highlight {
+  background-color: rgba(20, 184, 166, 0.2) !important;
+  color: #14b8a6 !important;
+}
+
+/* Fix select trigger background */
+.p-select .p-select-trigger {
+  background-color: #334155 !important;
+  border-left: 1px solid #475569 !important;
+  color: #94a3b8 !important;
+}
+
+
+.p-inputtext:focus,
+.p-inputtextarea:focus,
+.p-inputnumber:focus,
+.p-dropdown:focus-within,
+.p-select:focus-within {
+  border-color: #14b8a6 !important;
+  box-shadow: 0 0 0 2px rgba(20, 184, 166, 0.2) !important;
+  outline: none !important;
+}
+
+.p-inputtext:hover,
+.p-inputtextarea:hover,
+.p-inputnumber:hover,
+.p-dropdown:hover,
+.p-select:hover {
+  border-color: #64748b !important;
+}
+
+/* Styling dialog lebih bagus dan kecil */
+.p-dialog {
+  border-radius: 12px !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2) !important;
+  border: 1px solid #334155 !important;
+  max-width: 500px !important;
+  width: 90vw !important;
+}
+
+.p-dialog-header {
+  border-bottom: 1px solid #334155 !important;
+  padding: 1rem 1.25rem !important;
+}
+
+.p-dialog-content {
+  padding: 1.25rem !important;
+}
+
+.p-dialog-footer {
+  border-top: 1px solid #334155 !important;
+  padding: 0.75rem 1.25rem !important;
+}
+
+
+/* Button styling */
+.p-button {
+  border-radius: 8px !important;
+}
+
+.p-button-text {
+  color: #94a3b8 !important;
+}
+
+.p-button-text:hover {
+  color: #14b8a6 !important;
+  background-color: rgba(20, 184, 166, 0.1) !important;
+}
+
+.p-button-text:disabled,
+.p-button-text.p-disabled {
+  color: #94a3b8 !important;
+  opacity: 1 !important;
+  background-color: transparent !important;
+}
+
+.p-button-danger.p-button-text:hover {
+  color: #ef4444 !important;
+  background-color: rgba(239, 68, 68, 0.1) !important;
+}
+
+/* Ensure small button size consistent */
+.p-button-sm {
+  font-size: 0.875rem !important;
+  padding: 0.5rem 1rem !important;
+}
+
+
+/* Remove Focus Outline/Glow */
+.p-focus,
+.p-component:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* ================================
+   ABSOLUTE MAXIMUM SPECIFICITY BACKUP:
+   OVERRIDE EVERY POSSIBLE PRIMENG STATE!
+   ================================ */
+
+/* Force NO BACKGROUND CHANGE in ANY STATE */
+.sidebar .p-panelmenu,
+.sidebar .p-panelmenu *,
+.sidebar .p-panelmenu-panel,
+.sidebar .p-panelmenu-content,
+.sidebar .p-menuitem,
+.sidebar .p-menuitem-content,
+.sidebar .p-panelmenu-header,
+.sidebar .p-panelmenu-header:hover,
+.sidebar .p-panelmenu-header:focus,
+.sidebar .p-panelmenu-header:active,
+.sidebar .p-panelmenu-header.p-highlight,
+.sidebar .p-panelmenu-header.p-highlight:hover,
+.sidebar .p-panelmenu-header.p-highlight:focus,
+.sidebar .p-panelmenu-header.p-highlight:active,
+.sidebar .p-panelmenu-header a,
+.sidebar .p-panelmenu-header a:hover,
+.sidebar .p-panelmenu-header a:focus,
+.sidebar .p-panelmenu-header a:active,
+.sidebar .p-panelmenu-header.p-highlight a,
+.sidebar .p-panelmenu-header.p-highlight a:hover,
+.sidebar .p-panelmenu-header.p-highlight a:focus,
+.sidebar .p-panelmenu-header.p-highlight a:active,
+.sidebar .p-menuitem-link,
+.sidebar .p-menuitem-link:hover,
+.sidebar .p-menuitem-link:focus,
+.sidebar .p-menuitem-link:active,
+.sidebar .p-menuitem-link.p-focus,
+.sidebar .p-menuitem-link.router-link-active,
+.sidebar .p-menuitem-link.router-link-active:hover,
+.sidebar .p-menuitem-link.router-link-active:focus,
+.sidebar .p-menuitem-link.router-link-active:active,
+.sidebar .p-panelmenu-header .p-menuitem-icon,
+.sidebar .p-panelmenu-header:hover .p-menuitem-icon,
+.sidebar .p-panelmenu-header:focus .p-menuitem-icon,
+.sidebar .p-panelmenu-header:active .p-menuitem-icon,
+.sidebar .p-panelmenu-header.p-highlight .p-menuitem-icon,
+.sidebar .p-panelmenu-header.p-highlight:hover .p-menuitem-icon,
+.sidebar .p-panelmenu-header.p-highlight:focus .p-menuitem-icon,
+.sidebar .p-panelmenu-header.p-highlight:active .p-menuitem-icon,
+.sidebar .p-panelmenu-header .p-menuitem-text,
+.sidebar .p-panelmenu-header:hover .p-menuitem-text,
+.sidebar .p-panelmenu-header:focus .p-menuitem-text,
+.sidebar .p-panelmenu-header:active .p-menuitem-text,
+.sidebar .p-panelmenu-header.p-highlight .p-menuitem-text,
+.sidebar .p-panelmenu-header.p-highlight:hover .p-menuitem-text,
+.sidebar .p-panelmenu-header.p-highlight:focus .p-menuitem-text,
+.sidebar .p-panelmenu-header.p-highlight:active .p-menuitem-text,
+.sidebar .p-menuitem-link .p-menuitem-icon,
+.sidebar .p-menuitem-link:hover .p-menuitem-icon,
+.sidebar .p-menuitem-link:focus .p-menuitem-icon,
+.sidebar .p-menuitem-link:active .p-menuitem-icon,
+.sidebar .p-menuitem-link.p-focus .p-menuitem-icon,
+.sidebar .p-menuitem-link.router-link-active .p-menuitem-icon,
+.sidebar .p-menuitem-link.router-link-active:hover .p-menuitem-icon,
+.sidebar .p-menuitem-link.router-link-active:focus .p-menuitem-icon,
+.sidebar .p-menuitem-link.router-link-active:active .p-menuitem-icon,
+.sidebar .p-menuitem-link .p-menuitem-text,
+.sidebar .p-menuitem-link:hover .p-menuitem-text,
+.sidebar .p-menuitem-link:focus .p-menuitem-text,
+.sidebar .p-menuitem-link:active .p-menuitem-text,
+.sidebar .p-menuitem-link.p-focus .p-menuitem-text,
+.sidebar .p-menuitem-link.router-link-active .p-menuitem-text,
+.sidebar .p-menuitem-link.router-link-active:hover .p-menuitem-text,
+.sidebar .p-menuitem-link.router-link-active:focus .p-menuitem-text,
+.sidebar .p-menuitem-link.router-link-active:active .p-menuitem-text {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Force ALL MENU HEADERS to use EXACT SAME PADDING in EVERY STATE */
+.sidebar .p-panelmenu-header,
+.sidebar .p-panelmenu-header:hover,
+.sidebar .p-panelmenu-header:focus,
+.sidebar .p-panelmenu-header:active,
+.sidebar .p-panelmenu-header.p-highlight,
+.sidebar .p-panelmenu-header.p-highlight:hover,
+.sidebar .p-panelmenu-header.p-highlight:focus,
+.sidebar .p-panelmenu-header.p-highlight:active {
+  padding: 0.6rem 0.75rem !important;
+  margin-bottom: 0.25rem !important;
+  border-radius: 0.5rem !important;
+}
+
+/* Force HEADER LINKS to have NO PADDING CHANGE */
+.sidebar .p-panelmenu-header a,
+.sidebar .p-panelmenu-header a:hover,
+.sidebar .p-panelmenu-header a:focus,
+.sidebar .p-panelmenu-header a:active,
+.sidebar .p-panelmenu-header.p-highlight a,
+.sidebar .p-panelmenu-header.p-highlight a:hover,
+.sidebar .p-panelmenu-header.p-highlight a:focus,
+.sidebar .p-panelmenu-header.p-highlight a:active {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Force SUBMENU ITEMS to use EXACT SAME PADDING in EVERY STATE */
+.sidebar .p-menuitem-link,
+.sidebar .p-menuitem-link:hover,
+.sidebar .p-menuitem-link:focus,
+.sidebar .p-menuitem-link:active,
+.sidebar .p-menuitem-link.p-focus,
+.sidebar .p-menuitem-link.router-link-active,
+.sidebar .p-menuitem-link.router-link-active:hover,
+.sidebar .p-menuitem-link.router-link-active:focus,
+.sidebar .p-menuitem-link.router-link-active:active {
+  padding: 0.6rem 0.75rem !important;
+  margin-bottom: 0.25rem !important;
+  border-radius: 0.5rem !important;
+}
+
+/* ================================
+   ONLY TEXT COLOR CHANGES:
+   Default WHITE, Hover/Active TEAL!
+   ================================ */
+
+/* Menu Headers: Default WHITE */
+.sidebar .p-panelmenu-header a,
+.sidebar .p-panelmenu-header .p-menuitem-icon,
+.sidebar .p-panelmenu-header .p-menuitem-text {
+  color: #ffffff !important;
+  font-weight: 500 !important;
+}
+
+/* Menu Headers: Hover TEAL */
+.sidebar .p-panelmenu-header:hover a,
+.sidebar .p-panelmenu-header:hover .p-menuitem-icon,
+.sidebar .p-panelmenu-header:hover .p-menuitem-text {
+  color: #14b8a6 !important;
+}
+
+/* Menu Headers: Active (has active submenu) TEAL */
+.sidebar .p-panelmenu-header.p-highlight a,
+.sidebar .p-panelmenu-header.p-highlight .p-menuitem-icon,
+.sidebar .p-panelmenu-header.p-highlight .p-menuitem-text {
+  color: #14b8a6 !important;
+}
+
+/* Submenu Items: DEFAULT WHITE (MAX SPECIFICITY) */
+.sidebar .p-panelmenu-content .p-menuitem .p-menuitem-link,
+.sidebar .p-panelmenu-content .p-menuitem .p-menuitem-link .p-menuitem-icon,
+.sidebar .p-panelmenu-content .p-menuitem .p-menuitem-link .p-menuitem-text {
+  color: #ffffff !important;
+}
+
+/* Submenu Items: HOVER TEAL (MAX SPECIFICITY) */
+.sidebar .p-panelmenu-content .p-menuitem .p-menuitem-link:hover,
+.sidebar .p-panelmenu-content .p-menuitem .p-menuitem-link:hover .p-menuitem-icon,
+.sidebar .p-panelmenu-content .p-menuitem .p-menuitem-link:hover .p-menuitem-text {
+  color: #14b8a6 !important;
+}
+
+/* Submenu Items: ACTIVE TEAL (MAX SPECIFICITY) */
+.sidebar .p-panelmenu-content .p-menuitem .p-menuitem-link.router-link-active,
+.sidebar .p-panelmenu-content .p-menuitem .p-menuitem-link.router-link-active .p-menuitem-icon,
+.sidebar .p-panelmenu-content .p-menuitem .p-menuitem-link.router-link-active .p-menuitem-text {
+  color: #14b8a6 !important;
+}
+
+/* Submenu Content Padding */
+.sidebar .p-panelmenu-content {
+  padding-left: 1rem !important;
+  padding-top: 0.25rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+/* Icon Spacing */
+.sidebar .p-panelmenu-header .p-menuitem-icon,
+.sidebar .p-menuitem-link .p-menuitem-icon {
+  margin-right: 0.75rem !important;
+  font-size: 1.1rem !important;
+}
+
