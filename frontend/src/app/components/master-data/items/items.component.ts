@@ -60,7 +60,7 @@ import { Subscription } from 'rxjs';
               <th>Kategori</th>
               <th>Satuan</th>
               <th>Harga Satuan</th>
-              <th>Stok Awal</th>
+              <th>Stok Saat Ini</th>
               <th>Sisa Stok</th>
               <th style="width: 12rem;">Aksi</th>
             </tr>
@@ -156,13 +156,33 @@ import { Subscription } from 'rxjs';
           </div>
         </div>
 
-        <div class="form-group">
-          <label class="form-label">Stok Awal</label>
-          <p-inputNumber 
-            formControlName="stock" 
-            styleClass="w-full"
-          ></p-inputNumber>
+        <div *ngIf="isEdit; else addStockField" class="form-grid">
+          <div class="form-group">
+            <label class="form-label">Sisa Stok</label>
+            <p-inputNumber
+              formControlName="stock"
+              styleClass="w-full"
+              [disabled]="true"
+            ></p-inputNumber>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Restock</label>
+            <p-inputNumber
+              formControlName="restock"
+              styleClass="w-full"
+              [min]="0"
+            ></p-inputNumber>
+          </div>
         </div>
+        <ng-template #addStockField>
+          <div class="form-group">
+            <label class="form-label">Stok Saat Ini</label>
+            <p-inputNumber 
+              formControlName="stock" 
+              styleClass="w-full"
+            ></p-inputNumber>
+          </div>
+        </ng-template>
 
         <div class="form-footer">
           <p-button
@@ -192,6 +212,9 @@ export class ItemsComponent implements OnInit, OnDestroy {
   dialogVisible = false;
   isEdit = false;
   selectedItemId?: number;
+  selectedItemStock = 0;
+  selectedItemRemainingStock = 0;
+  lowStockThreshold = 10;
   itemForm: FormGroup;
   private refreshSub?: Subscription;
 
@@ -205,7 +228,8 @@ export class ItemsComponent implements OnInit, OnDestroy {
       category: ['', Validators.required],
       unit: ['', Validators.required],
       price: [0, Validators.required],
-      stock: [0, Validators.required]
+      stock: [0, Validators.required],
+      restock: [0]
     });
   }
 
@@ -240,6 +264,7 @@ export class ItemsComponent implements OnInit, OnDestroy {
   openAddDialog(): void {
     this.isEdit = false;
     this.selectedItemId = undefined;
+    this.itemForm.get('stock')?.enable();
     this.itemForm.reset();
     this.dialogVisible = true;
   }
@@ -247,7 +272,17 @@ export class ItemsComponent implements OnInit, OnDestroy {
   openEditDialog(item: Item): void {
     this.isEdit = true;
     this.selectedItemId = item.id;
-    this.itemForm.patchValue(item);
+    this.selectedItemStock = item.stock;
+    this.selectedItemRemainingStock = this.getRemainingStock(item.id);
+    this.itemForm.patchValue({
+      name: item.name,
+      category: item.category,
+      unit: item.unit,
+      price: item.price,
+      stock: item.stock,
+      restock: 0
+    });
+    this.itemForm.get('stock')?.disable();
     this.dialogVisible = true;
   }
 
@@ -259,9 +294,21 @@ export class ItemsComponent implements OnInit, OnDestroy {
     if (!this.itemForm.valid) return;
 
     if (this.isEdit && this.selectedItemId) {
-      this.apiService.updateItem(this.selectedItemId, this.itemForm.value).subscribe({
+      const formValue = this.itemForm.getRawValue();
+      const stockIncrement = Number(formValue.restock) || 0;
+      const updatedStock = Number(this.selectedItemStock) + stockIncrement;
+      const updatePayload = {
+        name: formValue.name,
+        category: formValue.category,
+        unit: formValue.unit,
+        price: formValue.price,
+        stock: updatedStock
+      };
+
+      this.apiService.updateItem(this.selectedItemId, updatePayload).subscribe({
         next: () => {
           this.messageService.add({ severity: 'success', summary: 'Berhasil', detail: 'Item diperbarui', life: 1000 });
+          this.itemForm.patchValue({ restock: 0, stock: updatedStock });
           this.closeDialog();
         },
         error: () => {
@@ -303,6 +350,6 @@ export class ItemsComponent implements OnInit, OnDestroy {
   }
 
   isLowStock(stock: number): boolean {
-    return stock < 20;
+    return stock <= this.lowStockThreshold;
   }
 }
