@@ -165,6 +165,77 @@ body {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
+.scrollable-table-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  max-height: 36rem;
+}
+
+.scrollable-table-card .p-datatable {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.scrollable-table-card .p-datatable .p-datatable-scrollable-body,
+.scrollable-table-card .p-datatable .p-datatable-scrollable-body-wrapper,
+.scrollable-table-card .p-datatable .p-datatable-tablecontainer,
+.scrollable-table-card .p-datatable .p-datatable-table-container {
+  overflow-y: auto;
+}
+
+.scrollable-table-card .p-datatable .p-datatable-tablecontainer,
+.scrollable-table-card .p-datatable .p-datatable-table-container {
+  height: auto !important;
+}
+
+.scrollable-table-card .p-datatable-thead > tr > th,
+.scrollable-table-card .p-datatable-tbody > tr > td {
+  border-left: none !important;
+  border-right: none !important;
+}
+
+.scrollable-table-card .p-datatable-tbody > tr {
+  border-bottom: 1px solid #334155 !important;
+}
+
+.scrollable-table-card .p-datatable-thead > tr > th {
+  border-bottom: 1px solid #334155 !important;
+}
+
+.scrollable-4-rows,
+.scrollable-5-rows,
+.scrollable-6-rows {
+  --p-datatable-row-height: 4.5rem;
+}
+
+.scrollable-4-rows .p-datatable-scrollable-body,
+.scrollable-4-rows .p-datatable-scrollable-body-wrapper {
+  max-height: calc(var(--p-datatable-row-height) * 4) !important;
+  height: auto !important;
+  overflow-y: auto !important;
+}
+
+.scrollable-5-rows .p-datatable-scrollable-body,
+.scrollable-5-rows .p-datatable-scrollable-body-wrapper {
+  max-height: calc(var(--p-datatable-row-height) * 5) !important;
+  height: auto !important;
+  overflow-y: auto !important;
+}
+
+.scrollable-6-rows .p-datatable-scrollable-body,
+.scrollable-6-rows .p-datatable-scrollable-body-wrapper {
+  max-height: calc(var(--p-datatable-row-height) * 6) !important;
+  height: auto !important;
+  overflow-y: auto !important;
+}
+
+.scrollable-4-rows .p-datatable-tbody > tr > td,
+.scrollable-5-rows .p-datatable-tbody > tr > td,
+.scrollable-6-rows .p-datatable-tbody > tr > td {
+  padding: 1rem 1.25rem !important;
+}
+
 .action-buttons {
   display: flex;
   gap: 24px;
@@ -624,43 +695,47 @@ body {
   }
 }
 
-.detail-card-body,
-.detail-card-body *,
-.detail-card-body .p-datatable .p-datatable-table-container,
-.detail-card-body .p-datatable .p-datatable-tablecontainer,
-.detail-card-body .p-datatable-scrollable-body,
-.detail-card-body .p-datatable-scrollable-body-wrapper {
-  scrollbar-color: #475569 #0f172a;
+.p-datatable,
+.p-datatable .p-datatable-table-container,
+.p-datatable .p-datatable-tablecontainer,
+.p-datatable-scrollable-body,
+.p-datatable-scrollable-body-wrapper {
+  scrollbar-color: #6b7280 #0f172a;
   scrollbar-width: thin;
 }
 
-.detail-card-body::-webkit-scrollbar,
-.detail-card-body *::-webkit-scrollbar,
-.detail-card-body .p-datatable .p-datatable-table-container::-webkit-scrollbar,
-.detail-card-body .p-datatable .p-datatable-tablecontainer::-webkit-scrollbar,
-.detail-card-body .p-datatable-scrollable-body::-webkit-scrollbar,
-.detail-card-body .p-datatable-scrollable-body-wrapper::-webkit-scrollbar {
+.p-datatable::-webkit-scrollbar,
+.p-datatable .p-datatable-table-container::-webkit-scrollbar,
+.p-datatable .p-datatable-tablecontainer::-webkit-scrollbar,
+.p-datatable-scrollable-body::-webkit-scrollbar,
+.p-datatable-scrollable-body-wrapper::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
 
-.detail-card-body::-webkit-scrollbar-track,
-.detail-card-body *::-webkit-scrollbar-track,
-.detail-card-body .p-datatable .p-datatable-table-container::-webkit-scrollbar-track,
-.detail-card-body .p-datatable .p-datatable-tablecontainer::-webkit-scrollbar-track,
-.detail-card-body .p-datatable-scrollable-body::-webkit-scrollbar-track,
-.detail-card-body .p-datatable-scrollable-body-wrapper::-webkit-scrollbar-track {
+.p-datatable::-webkit-scrollbar-track,
+.p-datatable .p-datatable-table-container::-webkit-scrollbar-track,
+.p-datatable .p-datatable-tablecontainer::-webkit-scrollbar-track,
+.p-datatable-scrollable-body::-webkit-scrollbar-track,
+.p-datatable-scrollable-body-wrapper::-webkit-scrollbar-track {
   background: #0f172a;
 }
 
-.detail-card-body::-webkit-scrollbar-thumb,
-.detail-card-body *::-webkit-scrollbar-thumb,
-.detail-card-body .p-datatable .p-datatable-table-container::-webkit-scrollbar-thumb,
-.detail-card-body .p-datatable .p-datatable-tablecontainer::-webkit-scrollbar-thumb,
-.detail-card-body .p-datatable-scrollable-body::-webkit-scrollbar-thumb,
-.detail-card-body .p-datatable-scrollable-body-wrapper::-webkit-scrollbar-thumb {
+.p-datatable::-webkit-scrollbar-thumb,
+.p-datatable .p-datatable-table-container::-webkit-scrollbar-thumb,
+.p-datatable .p-datatable-tablecontainer::-webkit-scrollbar-thumb,
+.p-datatable-scrollable-body::-webkit-scrollbar-thumb,
+.p-datatable-scrollable-body-wrapper::-webkit-scrollbar-thumb {
   background: #475569;
   border-radius: 9999px;
+}
+
+.p-datatable::-webkit-scrollbar-thumb:hover,
+.p-datatable .p-datatable-table-container::-webkit-scrollbar-thumb:hover,
+.p-datatable .p-datatable-tablecontainer::-webkit-scrollbar-thumb:hover,
+.p-datatable-scrollable-body::-webkit-scrollbar-thumb:hover,
+.p-datatable-scrollable-body-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
 }
 
 .chart-card-header,

@@ -46,11 +46,13 @@ import { Subscription } from 'rxjs';
         />
       </div>
 
-      <div class="card-container">
+      <div class="card-container scrollable-table-card">
         <p-table 
           [value]="items" 
           responsiveLayout="scroll"
-          styleClass="p-datatable-striped"
+          scrollable="true"
+          scrollHeight="calc(var(--p-datatable-row-height) * 6)"
+          styleClass="p-datatable-striped scrollable-6-rows"
         >
           <ng-template pTemplate="header">
             <tr>

@@ -86,7 +86,7 @@ import { Transaction } from '../../models/transaction.model';
               <h2>PT.Gamma Persada</h2>
             </div>
             <div class="header-right">
-              <p-button icon="pi pi-bell" styleClass="p-button-text p-button-rounded p-button-sm" [badge]="lowStockCount.toString()" badgeClass="p-badge-danger" />
+              <p-button icon="pi pi-bell" styleClass="p-button-text p-button-rounded p-button-sm" [badge]="lowStockCount.toString()" badgeClass="p-badge-danger" (onClick)="refreshLowStockNotifications()" />
               <div class="user-avatar">
                 <span>U</span>
               </div>
@@ -97,6 +97,18 @@ import { Transaction } from '../../models/transaction.model';
           <router-outlet />
         </main>
       </div>
+
+      <div class="notification-panel" *ngIf="notifications.length > 0">
+        <div class="notification-card" *ngFor="let note of notifications" [class.closing]="note.closing">
+          <div class="notification-header">
+            <div class="notification-title">{{ note.title }}</div>
+            <button type="button" class="notification-close" aria-label="Close notification" (click)="dismissNotification(note.id)">
+              ×
+            </button>
+          </div>
+          <div class="notification-body">{{ note.message }}</div>
+        </div>
+      </div>
     </div>
   `
 })
@@ -104,6 +116,9 @@ export class LayoutComponent implements OnInit, OnDestroy {
   sidebarOpen = false;
   isMobile = false;
   lowStockCount = 0;
+  lowStockThreshold = 10;
+  lowStockItems: Array<{ name: string; remaining: number; threshold: number }> = [];
+  notifications: Array<{ id: string; title: string; message: string; closing?: boolean }> = [];
   items: Item[] = [];
   transactions: Transaction[] = [];
 
@@ -189,18 +204,61 @@ export class LayoutComponent implements OnInit, OnDestroy {
     });
   }
 
+  refreshLowStockNotifications(): void {
+    this.createLowStockNotifications();
+  }
+
   calculateLowStock() {
     let count = 0;
+    this.lowStockItems = [];
     this.items.forEach(item => {
       const totalOut = this.transactions
         .filter(t => t.itemId === item.id)
         .reduce((sum, t) => sum + t.quantity, 0);
       const remaining = item.stock - totalOut;
-      if (remaining < 5) {
+      if (remaining <= this.lowStockThreshold) {
         count++;
+        this.lowStockItems.push({
+          name: item.name,
+          remaining,
+          threshold: this.lowStockThreshold
+        });
       }
     });
     this.lowStockCount = count;
+    this.createLowStockNotifications();
+  }
+
+  createLowStockNotifications(): void {
+    const activeIds = new Set<string>();
+    const newNotifications = this.lowStockItems.map(item => {
+      const id = `lowstock-${item.name.replace(/\s+/g, '-').toLowerCase()}-${item.remaining}`;
+      activeIds.add(id);
+      return {
+        id,
+        title: 'Stok Rendah',
+        message: `${item.name} tersisa ${item.remaining} unit. Ambang aman ${item.threshold} unit.`
+      };
+    });
+
+    newNotifications.reverse().forEach(notification => {
+      if (!this.notifications.some(existing => existing.id === notification.id)) {
+        this.notifications.unshift(notification);
+      }
+    });
+
+    this.notifications = this.notifications.filter(note => activeIds.has(note.id));
+  }
+
+  dismissNotification(id: string): void {
+    const note = this.notifications.find(n => n.id === id);
+    if (!note) {
+      return;
+    }
+    note.closing = true;
+    setTimeout(() => {
+      this.notifications = this.notifications.filter(n => n.id !== id);
+    }, 220);
   }
 
   ngOnDestroy(): void {
