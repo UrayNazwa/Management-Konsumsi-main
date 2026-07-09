@@ -130,13 +130,13 @@ interface YearOption {
     .dashboard-container {
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 24px;
     }
 
     .dashboard-header {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 24px;
     }
 
     @media (min-width: 768px) {
@@ -161,7 +161,7 @@ interface YearOption {
 
     .selector-group {
       display: flex;
-      gap: 0.75rem;
+      gap: 24px;
     }
 
     .select-small {
@@ -171,7 +171,7 @@ interface YearOption {
     .stats-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 1.5rem;
+      gap: 24px;
     }
 
     @media (min-width: 768px) {
@@ -253,7 +253,7 @@ interface YearOption {
     .charts-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 1.5rem;
+      gap: 24px;
     }
 
     @media (min-width: 1024px) {
@@ -286,7 +286,7 @@ interface YearOption {
     }
 
     .trend-chart {
-      margin-top: 1.5rem;
+      margin-top: 0;
     }
   `]
 })

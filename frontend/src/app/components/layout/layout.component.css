@@ -59,7 +59,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.75rem;
+  gap: 24px;
   margin-bottom: 2rem;
   padding: 0.5rem;
 }
@@ -67,7 +67,7 @@
 .sidebar-logo {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 24px;
 }
 
 .logo-circle {
@@ -135,16 +135,36 @@
   }
 }
 
+@media (max-width: 767px) {
+  .main-header {
+    padding: 0.875rem 1rem;
+  }
+}
+
 .header-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 0.75rem;
+}
+
+@media (max-width: 767px) {
+  .header-content {
+    flex-wrap: wrap;
+  }
 }
 
 .header-left {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 24px;
+}
+
+@media (max-width: 767px) {
+  .header-left {
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
 }
 
 .header-left h2 {
@@ -163,324 +183,13 @@
 .header-right {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 24px;
 }
 
-.user-avatar {
-  width: 32px;
-  height: 32px;
-  background: linear-gradient(135deg, #2dd4bf, #0891b2);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-@media (min-width: 768px) {
-  .user-avatar {
-    width: 40px;
-    height: 40px;
+@media (max-width: 767px) {
+  .header-right {
+    gap: 0.75rem;
+    margin-left: auto;
   }
 }
 
-.user-avatar span {
-  color: white;
-  font-size: 0.875rem;
-  font-weight: bold;
-}
-
-.content-area {
-  flex: 1;
-  padding: 1.5rem;
-  overflow-y: auto;
-}
-
-@media (min-width: 768px) {
-  .content-area {
-    padding: 1.5rem 2rem;
-  }
-}
-
-/* ================================
-   ABSOLUTE MAXIMUM SPECIFICITY:
-   OVERRIDE EVERY POSSIBLE PRIMENG STATE!
-   ================================ */
-
-/* Force NO BACKGROUND CHANGE in ANY STATE */
-::ng-deep .sidebar .p-panelmenu,
-::ng-deep .sidebar .p-panelmenu *,
-::ng-deep .sidebar .p-panelmenu-panel,
-::ng-deep .sidebar .p-panelmenu-content,
-::ng-deep .sidebar .p-menuitem,
-::ng-deep .sidebar .p-menuitem-content,
-::ng-deep .sidebar .p-panelmenu-header,
-::ng-deep .sidebar .p-panelmenu-header:hover,
-::ng-deep .sidebar .p-panelmenu-header:focus,
-::ng-deep .sidebar .p-panelmenu-header:active,
-::ng-deep .sidebar .p-panelmenu-header.p-highlight,
-::ng-deep .sidebar .p-panelmenu-header.p-highlight:hover,
-::ng-deep .sidebar .p-panelmenu-header.p-highlight:focus,
-::ng-deep .sidebar .p-panelmenu-header.p-highlight:active,
-::ng-deep .sidebar .p-panelmenu-header a,
-::ng-deep .sidebar .p-panelmenu-header a:hover,
-::ng-deep .sidebar .p-panelmenu-header a:focus,
-::ng-deep .sidebar .p-panelmenu-header a:active,
-::ng-deep .sidebar .p-panelmenu-header.p-highlight a,
-::ng-deep .sidebar .p-panelmenu-header.p-highlight a:hover,
-::ng-deep .sidebar .p-panelmenu-header.p-highlight a:focus,
-::ng-deep .sidebar .p-panelmenu-header.p-highlight a:active,
-::ng-deep .sidebar .p-menuitem-link,
-::ng-deep .sidebar .p-menuitem-link:hover,
-::ng-deep .sidebar .p-menuitem-link:focus,
-::ng-deep .sidebar .p-menuitem-link:active,
-::ng-deep .sidebar .p-menuitem-link.p-focus,
-::ng-deep .sidebar .p-menuitem-link.router-link-active,
-::ng-deep .sidebar .p-menuitem-link.router-link-active:hover,
-::ng-deep .sidebar .p-menuitem-link.router-link-active:focus,
-::ng-deep .sidebar .p-menuitem-link.router-link-active:active,
-::ng-deep .sidebar .p-panelmenu-header .p-menuitem-icon,
-::ng-deep .sidebar .p-panelmenu-header:hover .p-menuitem-icon,
-::ng-deep .sidebar .p-panelmenu-header:focus .p-menuitem-icon,
-::ng-deep .sidebar .p-panelmenu-header:active .p-menuitem-icon,
-::ng-deep .sidebar .p-panelmenu-header.p-highlight .p-menuitem-icon,
-::ng-deep .sidebar .p-panelmenu-header.p-highlight:hover .p-menuitem-icon,
-::ng-deep .sidebar .p-panelmenu-header.p-highlight:focus .p-menuitem-icon,
-::ng-deep .sidebar .p-panelmenu-header.p-highlight:active .p-menuitem-icon,
-::ng-deep .sidebar .p-panelmenu-header .p-menuitem-text,
-::ng-deep .sidebar .p-panelmenu-header:hover .p-menuitem-text,
-::ng-deep .sidebar .p-panelmenu-header:focus .p-menuitem-text,
-::ng-deep .sidebar .p-panelmenu-header:active .p-menuitem-text,
-::ng-deep .sidebar .p-panelmenu-header.p-highlight .p-menuitem-text,
-::ng-deep .sidebar .p-panelmenu-header.p-highlight:hover .p-menuitem-text,
-::ng-deep .sidebar .p-panelmenu-header.p-highlight:focus .p-menuitem-text,
-::ng-deep .sidebar .p-panelmenu-header.p-highlight:active .p-menuitem-text,
-::ng-deep .sidebar .p-menuitem-link .p-menuitem-icon,
-::ng-deep .sidebar .p-menuitem-link:hover .p-menuitem-icon,
-::ng-deep .sidebar .p-menuitem-link:focus .p-menuitem-icon,
-::ng-deep .sidebar .p-menuitem-link:active .p-menuitem-icon,
-::ng-deep .sidebar .p-menuitem-link.p-focus .p-menuitem-icon,
-::ng-deep .sidebar .p-menuitem-link.router-link-active .p-menuitem-icon,
-::ng-deep .sidebar .p-menuitem-link.router-link-active:hover .p-menuitem-icon,
-::ng-deep .sidebar .p-menuitem-link.router-link-active:focus .p-menuitem-icon,
-::ng-deep .sidebar .p-menuitem-link.router-link-active:active .p-menuitem-icon,
-::ng-deep .sidebar .p-menuitem-link .p-menuitem-text,
-::ng-deep .sidebar .p-menuitem-link:hover .p-menuitem-text,
-::ng-deep .sidebar .p-menuitem-link:focus .p-menuitem-text,
-::ng-deep .sidebar .p-menuitem-link:active .p-menuitem-text,
-::ng-deep .sidebar .p-menuitem-link.p-focus .p-menuitem-text,
-::ng-deep .sidebar .p-menuitem-link.router-link-active .p-menuitem-text,
-::ng-deep .sidebar .p-menuitem-link.router-link-active:hover .p-menuitem-text,
-::ng-deep .sidebar .p-menuitem-link.router-link-active:focus .p-menuitem-text,
-::ng-deep .sidebar .p-menuitem-link.router-link-active:active .p-menuitem-text {
-  background: transparent !important;
-  background-color: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  outline: none !important;
-}
-
-::ng-deep .sidebar .p-panelmenu-panel {
-  margin: 0 !important;
-}
-
-::ng-deep .sidebar .p-panelmenu-content {
-  padding: 0 0 0.25rem 0.75rem !important;
-  border: none !important;
-}
-
-::ng-deep .sidebar .p-submenu-list {
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-::ng-deep .sidebar .p-menuitem {
-  margin: 0 !important;
-}
-
-::ng-deep .sidebar .p-panelmenu-header {
-  margin-bottom: 0.2rem !important;
-}
-
-::ng-deep .sidebar .p-panelmenu-header-action,
-::ng-deep .sidebar .p-menuitem-link {
-  display: flex !important;
-  align-items: center !important;
-  width: 100% !important;
-  min-height: 2.35rem !important;
-  line-height: 1.2 !important;
-  text-decoration: none !important;
-  white-space: nowrap !important;
-}
-
-::ng-deep .sidebar .p-panelmenu-header-action .p-menuitem-text,
-::ng-deep .sidebar .p-menuitem-link .p-menuitem-text,
-::ng-deep .sidebar .p-panelmenu-header-action .p-menuitem-icon,
-::ng-deep .sidebar .p-menuitem-link .p-menuitem-icon {
-  color: inherit !important;
-}
-
-::ng-deep .sidebar .p-panelmenu-header-action:hover,
-::ng-deep .sidebar .p-panelmenu-header-action:focus,
-::ng-deep .sidebar .p-panelmenu-header-action:focus-visible,
-::ng-deep .sidebar .p-menuitem-link:hover,
-::ng-deep .sidebar .p-menuitem-link:focus,
-::ng-deep .sidebar .p-menuitem-link:focus-visible,
-::ng-deep .sidebar .p-menuitem-link.router-link-active {
-  background: transparent !important;
-  color: #14b8a6 !important;
-}
-
-/* Force ALL MENU HEADERS to use EXACT SAME PADDING in EVERY STATE */
-::ng-deep .sidebar .p-panelmenu-header,
-::ng-deep .sidebar .p-panelmenu-header:hover,
-::ng-deep .sidebar .p-panelmenu-header:focus,
-::ng-deep .sidebar .p-panelmenu-header:active,
-::ng-deep .sidebar .p-panelmenu-header.p-highlight,
-::ng-deep .sidebar .p-panelmenu-header.p-highlight:hover,
-::ng-deep .sidebar .p-panelmenu-header.p-highlight:focus,
-::ng-deep .sidebar .p-panelmenu-header.p-highlight:active {
-  padding: 0.6rem 0.75rem !important;
-  margin-bottom: 0.25rem !important;
-  border-radius: 0.5rem !important;
-}
-
-/* Force HEADER LINKS to have NO PADDING CHANGE */
-::ng-deep .sidebar .p-panelmenu-header a,
-::ng-deep .sidebar .p-panelmenu-header a:hover,
-::ng-deep .sidebar .p-panelmenu-header a:focus,
-::ng-deep .sidebar .p-panelmenu-header a:active,
-::ng-deep .sidebar .p-panelmenu-header.p-highlight a,
-::ng-deep .sidebar .p-panelmenu-header.p-highlight a:hover,
-::ng-deep .sidebar .p-panelmenu-header.p-highlight a:focus,
-::ng-deep .sidebar .p-panelmenu-header.p-highlight a:active {
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-/* Force SUBMENU ITEMS to use EXACT SAME PADDING in EVERY STATE */
-::ng-deep .sidebar .p-menuitem-link,
-::ng-deep .sidebar .p-menuitem-link:hover,
-::ng-deep .sidebar .p-menuitem-link:focus,
-::ng-deep .sidebar .p-menuitem-link:active,
-::ng-deep .sidebar .p-menuitem-link.p-focus,
-::ng-deep .sidebar .p-menuitem-link.router-link-active,
-::ng-deep .sidebar .p-menuitem-link.router-link-active:hover,
-::ng-deep .sidebar .p-menuitem-link.router-link-active:focus,
-::ng-deep .sidebar .p-menuitem-link.router-link-active:active {
-  padding: 0.6rem 0.75rem !important;
-  margin-bottom: 0.25rem !important;
-  border-radius: 0.5rem !important;
-}
-
-/* ================================
-   ONLY TEXT COLOR CHANGES:
-   Default WHITE, Hover/Active TEAL!
-   ================================ */
-
-/* Menu Headers: Default Accent */
-::ng-deep .sidebar .p-panelmenu-header a,
-::ng-deep .sidebar .p-panelmenu-header .p-menuitem-icon,
-::ng-deep .sidebar .p-panelmenu-header .p-menuitem-text {
-  color: #14f9d0 !important;
-  font-weight: 500 !important;
-}
-
-/* Menu Headers: Hover TEAL */
-::ng-deep .sidebar .p-panelmenu-header:hover a,
-::ng-deep .sidebar .p-panelmenu-header:hover .p-menuitem-icon,
-::ng-deep .sidebar .p-panelmenu-header:hover .p-menuitem-text {
-  color: #14b8a6 !important;
-}
-
-/* Menu Headers: Active (has active submenu) TEAL */
-::ng-deep .sidebar .p-panelmenu-header.p-highlight a,
-::ng-deep .sidebar .p-panelmenu-header.p-highlight .p-menuitem-icon,
-::ng-deep .sidebar .p-panelmenu-header.p-highlight .p-menuitem-text {
-  color: #14b8a6 !important;
-}
-
-/* Submenu Items: DEFAULT Accent (MAX SPECIFICITY) */
-::ng-deep .sidebar .p-panelmenu-content .p-menuitem .p-menuitem-link,
-::ng-deep .sidebar .p-panelmenu-content .p-menuitem .p-menuitem-link .p-menuitem-icon,
-::ng-deep .sidebar .p-panelmenu-content .p-menuitem .p-menuitem-link .p-menuitem-text {
-  color: #14f9d0 !important;
-}
-
-/* Submenu Items: HOVER TEAL (MAX SPECIFICITY) */
-::ng-deep .sidebar .p-panelmenu-content .p-menuitem .p-menuitem-link:hover,
-::ng-deep .sidebar .p-panelmenu-content .p-menuitem .p-menuitem-link:hover .p-menuitem-icon,
-::ng-deep .sidebar .p-panelmenu-content .p-menuitem .p-menuitem-link:hover .p-menuitem-text {
-  color: #14b8a6 !important;
-}
-
-/* Submenu Items: ACTIVE TEAL (MAX SPECIFICITY) */
-::ng-deep .sidebar .p-panelmenu-content .p-menuitem .p-menuitem-link.router-link-active,
-::ng-deep .sidebar .p-panelmenu-content .p-menuitem .p-menuitem-link.router-link-active .p-menuitem-icon,
-::ng-deep .sidebar .p-panelmenu-content .p-menuitem .p-menuitem-link.router-link-active .p-menuitem-text {
-  color: #14b8a6 !important;
-}
-
-/* Submenu Content Padding */
-::ng-deep .sidebar .p-panelmenu-content {
-  padding-left: 1rem !important;
-  padding-top: 0.25rem !important;
-  padding-bottom: 0.5rem !important;
-}
-
-/* Icon Spacing */
-::ng-deep .sidebar .p-panelmenu-header .p-menuitem-icon,
-::ng-deep .sidebar .p-menuitem-link .p-menuitem-icon {
-  margin-right: 0.75rem !important;
-  font-size: 1.1rem !important;
-}
-
-/* Fix Dashboard leaf item: remove empty submenu container */
-::ng-deep .sidebar .p-panelmenu-header.sidebar-leaf-item + .p-panelmenu-content-container {
-  display: none !important;
-  max-height: 0 !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
-}
-
-/* Force leaf item header label color */
-::ng-deep .sidebar .p-panelmenu-header .p-panelmenu-header-label,
-::ng-deep .sidebar .p-panelmenu-header .p-panelmenu-header-link,
-::ng-deep .sidebar .p-panelmenu-header .p-panelmenu-header-icon {
-  color: #ffffff !important;
-}
-
-::ng-deep .sidebar .p-panelmenu-header:hover .p-panelmenu-header-label,
-::ng-deep .sidebar .p-panelmenu-header:hover .p-panelmenu-header-icon,
-::ng-deep .sidebar .p-panelmenu-header:hover .p-panelmenu-header-link {
-  color: #14b8a6 !important;
-}
-
-::ng-deep .sidebar .p-panelmenu-header.p-panelmenu-header-active .p-panelmenu-header-label,
-::ng-deep .sidebar .p-panelmenu-header.p-panelmenu-header-active .p-panelmenu-header-icon,
-::ng-deep .sidebar .p-panelmenu-header.p-panelmenu-header-active .p-panelmenu-header-link {
-  color: #14b8a6 !important;
-}
-
-/* Submenu item colors for PrimeNG 21 markup */
-::ng-deep .sidebar .p-panelmenu-content .p-panelmenu-item-link,
-::ng-deep .sidebar .p-panelmenu-content .p-panelmenu-item-link .p-panelmenu-item-icon,
-::ng-deep .sidebar .p-panelmenu-content .p-panelmenu-item-link .p-panelmenu-item-label {
-  color: #ffffff !important;
-}
-
-::ng-deep .sidebar .p-panelmenu-content .p-panelmenu-item-link:hover,
-::ng-deep .sidebar .p-panelmenu-content .p-panelmenu-item-link:hover .p-panelmenu-item-icon,
-::ng-deep .sidebar .p-panelmenu-content .p-panelmenu-item-link:hover .p-panelmenu-item-label,
-::ng-deep .sidebar .p-panelmenu-content .p-panelmenu-item-link:focus,
-::ng-deep .sidebar .p-panelmenu-content .p-panelmenu-item-link:focus .p-panelmenu-item-icon,
-::ng-deep .sidebar .p-panelmenu-content .p-panelmenu-item-link:focus .p-panelmenu-item-label,
-::ng-deep .sidebar .p-panelmenu-content .p-panelmenu-item-link:active,
-::ng-deep .sidebar .p-panelmenu-content .p-panelmenu-item-link:active .p-panelmenu-item-icon,
-::ng-deep .sidebar .p-panelmenu-content .p-panelmenu-item-link:active .p-panelmenu-item-label,
-::ng-deep .sidebar .p-panelmenu-content .p-panelmenu-item-link.p-panelmenu-item-link-active,
-::ng-deep .sidebar .p-panelmenu-content .p-panelmenu-item-link.p-panelmenu-item-link-active .p-panelmenu-item-icon,
-::ng-deep .sidebar .p-panelmenu-content .p-panelmenu-item-link.p-panelmenu-item-link-active .p-panelmenu-item-label {
-  color: #14b8a6 !important;
-}

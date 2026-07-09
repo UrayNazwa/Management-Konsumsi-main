@@ -88,7 +88,7 @@ interface YearOption {
       <div class="table-card detail-card">
         <div class="table-card-header">Detail Pengeluaran per Divisi</div>
         <div class="detail-card-body">
-          <p-table [value]="divisionDetail" responsiveLayout="scroll" styleClass="p-datatable-striped">
+          <p-table [value]="divisionDetail" responsiveLayout="scroll" scrollable="true" scrollHeight="18rem" styleClass="p-datatable-striped">
             <ng-template pTemplate="header">
               <tr>
                 <th>Divisi</th>
@@ -363,7 +363,7 @@ export class DivisionReportComponent implements OnInit, OnDestroy {
 
     this.doughnutChartOptions = {
       maintainAspectRatio: false,
-      aspectRatio: 2,
+      aspectRatio: 1.5,
       plugins: {
         legend: {
           position: 'bottom',
@@ -410,7 +410,7 @@ export class DivisionReportComponent implements OnInit, OnDestroy {
 
     this.monthlyChartOptions = {
       maintainAspectRatio: false,
-      aspectRatio: 3,
+      aspectRatio: 1.5,
       plugins: {
         legend: {
           display: true,

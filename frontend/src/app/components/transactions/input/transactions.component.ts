@@ -46,7 +46,7 @@ import { Subscription } from 'rxjs';
         ></p-button>
       </div>
 
-      <div *ngIf="currentMonthTransactions.length > 0; else emptyState">
+      <div class="page-section" *ngIf="currentMonthTransactions.length > 0; else emptyState">
         <div class="stats-grid">
           <div class="stat-card">
             <p class="stat-card-label">Total Transaksi Bulan Ini</p>

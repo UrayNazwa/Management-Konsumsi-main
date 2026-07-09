@@ -1,9 +1,9 @@
 # Management Konsumsi & Pokok
 
 ## Stack
-- **Backend**: Node.js 24 (vanilla, tanpa framework) + SQLite
-- **Frontend**: Angular 21 + Tailwind CSS + PrimeNG 21
-- **Database**: SQLite
+- **Backend**: Node.js 24 (vanilla, tanpa framework) + MySQL
+- **Frontend**: Angular 21 + PrimeNG 21
+- **Database**: MySQL
 - **Containerization**: Docker + Docker Compose
 
 ## Features
@@ -41,7 +41,7 @@
    npm start
    ```
    - Backend akan berjalan di **http://localhost:3000**
-   - **SQLite database otomatis dibuat di folder `backend/data`** (tidak perlu install database tambahan!)
+   - Pastikan MySQL sudah berjalan, karena backend menggunakan MySQL sebagai database.
 
 ### 🚀 Langkah 2: Jalankan Frontend (Angular 21)
 1. Buka **Terminal Baru** (jangan tutup terminal backend!)
@@ -59,6 +59,8 @@
    npm start
    ```
    - Frontend akan berjalan di **http://localhost:4200**
+
+> Pastikan MySQL sudah berjalan sebelum backend dijalankan.
 
 ### 🎉 Selesai!
 Buka browser kamu dan akses **http://localhost:4200**
@@ -98,5 +100,5 @@ docker-compose down
 
 ---
 ## 💡 Catatan Penting
-- **SQLite**: Database sudah terintegrasi otomatis di backend. File database disimpan di `backend/data/database.db` dan akan dibuat otomatis ketika backend pertama kali dijalankan. **TIDAK PERLU MENGHAPUS ATAU MENGUBAH APA-APA tentang SQLite!**
+- **MySQL**: Backend menggunakan MySQL. Pastikan service MySQL aktif dan koneksi database sudah dikonfigurasi sebelum menjalankan backend.
 - **Angular 21**: Frontend menggunakan Angular 21 dengan PrimeNG 21. Pastikan kamu menjalankan `npm install --legacy-peer-deps` untuk menghindari konflik dependency.

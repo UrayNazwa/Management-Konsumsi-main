@@ -48,7 +48,7 @@ interface TransactionWithStock extends Transaction {
         </div>
       </div>
 
-      <div *ngIf="filteredTransactions.length > 0; else emptyState">
+      <div class="page-section" *ngIf="filteredTransactions.length > 0; else emptyState">
         <div class="stats-grid">
           <div class="stat-card">
             <p class="stat-card-label">Total Transaksi</p>

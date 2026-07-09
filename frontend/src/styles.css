@@ -14,13 +14,106 @@ body {
 .page-container {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 24px;
+}
+
+/* Generic inner page section to enforce consistent card spacing
+   for templates that wrap content in an unstyled div. */
+.page-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .page-header {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 24px;
+}
+
+.main-header {
+  background-color: #1e293b;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #334155;
+  padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  .main-header {
+    padding: 1rem 2rem;
+  }
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+    gap: 24px;
+}
+
+.header-left h2 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .header-left h2 {
+    font-size: 1.25rem;
+  }
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+    gap: 24px;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #2dd4bf, #0891b2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .user-avatar {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.user-avatar span {
+  color: white;
+  font-size: 0.875rem;
+  font-weight: bold;
+}
+
+.content-area {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+@media (max-width: 1023px) {
+  .content-area {
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .content-area {
+    padding: 1rem;
+  }
 }
 
 @media (min-width: 768px) {
@@ -28,6 +121,12 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+  }
+}
+
+@media (max-width: 767px) {
+  .page-header {
+    gap: 16px;
   }
 }
 
@@ -40,6 +139,16 @@ body {
 @media (min-width: 768px) {
   .page-title h1 {
     font-size: 1.875rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .page-title h1 {
+    font-size: 1.35rem;
+  }
+
+  .page-title p {
+    font-size: 0.95rem;
   }
 }
 
@@ -58,7 +167,14 @@ body {
 
 .action-buttons {
   display: flex;
-  gap: 0.5rem;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 767px) {
+  .action-buttons {
+    gap: 12px;
+  }
 }
 
 .text-slate-200 {
@@ -89,10 +205,10 @@ body {
   margin-bottom: 0.5rem;
 }
 
-.form-footer {
+  form-footer {
   display: flex;
   justify-content: flex-end;
-  gap: 0.5rem;
+  gap: 24px;
   padding-top: 1rem;
   border-top: 1px solid #334155;
 }
@@ -108,7 +224,7 @@ body {
 .form-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1rem;
+  gap: 24px;
 }
 
 @media (min-width: 768px) {
@@ -120,11 +236,16 @@ body {
 .stats-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  gap: 24px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1023px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
   .stats-grid {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -202,7 +323,7 @@ body {
 .filter-group {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+      gap: 24px;
   width: 100%;
 }
 
@@ -223,17 +344,34 @@ body {
 
 /* Report component styles */
 .report-page {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
 }
 
 .report-header {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  gap: 24px;
+  margin-bottom: 0;
+}
+
+@media (max-width: 767px) {
+  .report-header {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+.report-content-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .report-title {
@@ -252,9 +390,42 @@ body {
 .report-controls {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 24px;
   align-items: center;
   justify-content: flex-end;
+}
+
+@media (max-width: 767px) {
+  .report-controls,
+  .selector-group,
+  .filter-group {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .report-controls > *,
+  .selector-group > *,
+  .filter-group > * {
+    width: 100%;
+  }
+
+  .select-small,
+  .report-control-select,
+  .report-dropdown {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .p-select.select-small,
+  .p-dropdown.select-small,
+  .p-select.report-control-select,
+  .p-dropdown.report-control-select,
+  .p-select.report-dropdown,
+  .p-dropdown.report-dropdown {
+    width: 100% !important;
+  }
 }
 
 .section-row > div:first-child {
@@ -266,9 +437,10 @@ body {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  gap: 24px;
+  margin-bottom: 24px;
 }
+
 
 @media (max-width: 768px) {
   .section-row {
@@ -283,7 +455,7 @@ body {
 .report-control-group {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+    gap: 24px;
   background-color: #0f172a;
   border: 1px solid #334155;
   border-radius: 9999px;
@@ -347,11 +519,17 @@ body {
 .report-card-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  gap: 24px;
+  align-items: start;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1023px) {
+  .report-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
   .report-card-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -400,13 +578,14 @@ body {
   padding: 1.25rem;
   background-color: #1e293b;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-  margin-bottom: 1.5rem;
 }
+
+/* Chart sizing: use Chart.js options from components (do not force canvas height here).
+   Report charts will match dashboard sizing via component options. */
 
 .detail-card {
   display: flex;
   flex-direction: column;
-  max-height: 22rem;
   overflow: hidden;
 }
 
@@ -417,7 +596,8 @@ body {
 .detail-card-body {
   flex: 1 1 auto;
   min-height: 0;
-  overflow-y: auto;
+  max-height: 18rem;
+  overflow: hidden;
 }
 
 .detail-card-body .p-datatable .p-datatable-table-container,
@@ -426,29 +606,61 @@ body {
   min-height: 0;
   max-height: 100%;
   overflow-y: auto !important;
+  overflow-x: auto;
 }
 
 .detail-card-body .p-datatable table {
   width: 100%;
+  min-width: 640px;
 }
 
-.detail-card::-webkit-scrollbar {
+@media (max-width: 767px) {
+  .detail-card-body {
+    max-height: none;
+  }
+
+  .detail-card-body .p-datatable table {
+    min-width: 560px;
+  }
+}
+
+.detail-card-body,
+.detail-card-body *,
+.detail-card-body .p-datatable .p-datatable-table-container,
+.detail-card-body .p-datatable .p-datatable-tablecontainer,
+.detail-card-body .p-datatable-scrollable-body,
+.detail-card-body .p-datatable-scrollable-body-wrapper {
+  scrollbar-color: #475569 #0f172a;
+  scrollbar-width: thin;
+}
+
+.detail-card-body::-webkit-scrollbar,
+.detail-card-body *::-webkit-scrollbar,
+.detail-card-body .p-datatable .p-datatable-table-container::-webkit-scrollbar,
+.detail-card-body .p-datatable .p-datatable-tablecontainer::-webkit-scrollbar,
+.detail-card-body .p-datatable-scrollable-body::-webkit-scrollbar,
+.detail-card-body .p-datatable-scrollable-body-wrapper::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
 
-.detail-card::-webkit-scrollbar-track {
+.detail-card-body::-webkit-scrollbar-track,
+.detail-card-body *::-webkit-scrollbar-track,
+.detail-card-body .p-datatable .p-datatable-table-container::-webkit-scrollbar-track,
+.detail-card-body .p-datatable .p-datatable-tablecontainer::-webkit-scrollbar-track,
+.detail-card-body .p-datatable-scrollable-body::-webkit-scrollbar-track,
+.detail-card-body .p-datatable-scrollable-body-wrapper::-webkit-scrollbar-track {
   background: #0f172a;
 }
 
-.detail-card::-webkit-scrollbar-thumb {
+.detail-card-body::-webkit-scrollbar-thumb,
+.detail-card-body *::-webkit-scrollbar-thumb,
+.detail-card-body .p-datatable .p-datatable-table-container::-webkit-scrollbar-thumb,
+.detail-card-body .p-datatable .p-datatable-tablecontainer::-webkit-scrollbar-thumb,
+.detail-card-body .p-datatable-scrollable-body::-webkit-scrollbar-thumb,
+.detail-card-body .p-datatable-scrollable-body-wrapper::-webkit-scrollbar-thumb {
   background: #475569;
   border-radius: 9999px;
-}
-
-.detail-card {
-  scrollbar-color: #475569 #0f172a;
-  scrollbar-width: thin;
 }
 
 .chart-card-header,
@@ -750,19 +962,26 @@ body {
 .info-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1rem;
+  gap: 24px;
+  align-items: start;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1023px) {
   .info-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-.info-metric {
+@media (min-width: 1024px) {
+  .info-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+    .info-metric {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 24px;
 }
 
 .info-label {

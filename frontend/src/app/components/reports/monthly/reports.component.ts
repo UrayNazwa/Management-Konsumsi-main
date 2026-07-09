@@ -52,48 +52,50 @@ interface YearOption {
         </div>
       </div>
 
-      <div class="info-grid">
-        <div class="info-card">
-          <div class="info-label">Total Pengeluaran {{ selectedYear }}</div>
-          <div class="info-value">{{ formatCurrency(totalYearlyExpense) }}</div>
+      <div class="report-content-stack">
+        <div class="info-grid">
+          <div class="info-card">
+            <div class="info-label">Total Pengeluaran {{ selectedYear }}</div>
+            <div class="info-value">{{ formatCurrency(totalYearlyExpense) }}</div>
+          </div>
+          <div class="info-card">
+            <div class="info-label">Total Transaksi</div>
+            <div class="info-value">{{ totalTransactions }}</div>
+          </div>
         </div>
-        <div class="info-card">
-          <div class="info-label">Total Transaksi</div>
-          <div class="info-value">{{ totalTransactions }}</div>
-        </div>
-      </div>
 
-      <div class="chart-card">
+        <div class="chart-card">
         <h3 class="chart-card-header">Grafik Pengeluaran {{ selectedYear }}</h3>
         <p-chart type="bar" [data]="chartData" [options]="chartOptions"></p-chart>
       </div>
 
-      <div class="table-card detail-card">
-        <div class="table-card-header">Detail Pengeluaran per Bulan</div>
-        <div class="detail-card-body">
-          <p-table [value]="monthlyDetail" responsiveLayout="scroll" styleClass="p-datatable-striped">
-            <ng-template pTemplate="header">
-              <tr>
-                <th>Bulan</th>
-                <th>Jumlah Transaksi</th>
-                <th>Total Pengeluaran</th>
-              </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-item>
-              <tr class="table-row-hover">
-                <td class="table-cell-strong">{{ item.month }}</td>
-                <td class="text-muted">{{ item.transactionCount }}</td>
-                <td class="table-cell-strong">{{ formatCurrency(item.total) }}</td>
-              </tr>
-            </ng-template>
-            <ng-template pTemplate="footer">
-              <tr>
-                <td class="table-cell-strong">Total</td>
-                <td class="table-cell-strong">{{ totalTransactions }}</td>
-                <td class="table-cell-strong">{{ formatCurrency(totalYearlyExpense) }}</td>
-              </tr>
-            </ng-template>
-          </p-table>
+        <div class="table-card detail-card">
+          <div class="table-card-header">Detail Pengeluaran per Bulan</div>
+          <div class="detail-card-body">
+            <p-table [value]="monthlyDetail" responsiveLayout="scroll" scrollable="true" scrollHeight="18rem" styleClass="p-datatable-striped">
+              <ng-template pTemplate="header">
+                <tr>
+                  <th>Bulan</th>
+                  <th>Jumlah Transaksi</th>
+                  <th>Total Pengeluaran</th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-item>
+                <tr class="table-row-hover">
+                  <td class="table-cell-strong">{{ item.month }}</td>
+                  <td class="text-muted">{{ item.transactionCount }}</td>
+                  <td class="table-cell-strong">{{ formatCurrency(item.total) }}</td>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="footer">
+                <tr>
+                  <td class="table-cell-strong">Total</td>
+                  <td class="table-cell-strong">{{ totalTransactions }}</td>
+                  <td class="table-cell-strong">{{ formatCurrency(totalYearlyExpense) }}</td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
         </div>
       </div>
     </div>
@@ -180,12 +182,14 @@ export class ReportsComponent implements OnInit, OnDestroy {
       total: monthlyData[i + 1].total
     }));
 
+    const dataValues = months.map((_, i) => monthlyData[i + 1].total);
+
     this.chartData = {
       labels: monthShort,
       datasets: [
         {
           label: 'Total Pengeluaran',
-          data: months.map((_, i) => monthlyData[i + 1].total),
+          data: dataValues,
           backgroundColor: 'rgba(16, 185, 129, 0.8)',
           borderColor: 'rgba(16, 185, 129, 1)',
           borderWidth: 0,
@@ -194,9 +198,16 @@ export class ReportsComponent implements OnInit, OnDestroy {
       ]
     };
 
+    // Determine dynamic y-axis step size and suggested max
+    const maxValue = Math.max(...dataValues, 0);
+    // If max exceeds 1,000,000 use 500k steps, otherwise 50k steps
+    const stepSize = maxValue > 1000000 ? 500000 : 50000;
+    // Round suggested max up to nearest step (at least one step)
+    const suggestedMax = Math.max(stepSize, Math.ceil(maxValue / stepSize) * stepSize);
+
     this.chartOptions = {
       maintainAspectRatio: false,
-      aspectRatio: 3,
+      aspectRatio: 1.5,
       plugins: {
         legend: {
           display: true,
@@ -214,15 +225,21 @@ export class ReportsComponent implements OnInit, OnDestroy {
       scales: {
         y: {
           beginAtZero: true,
+          suggestedMax,
           grid: {
             color: 'rgba(148, 163, 184, 0.1)'
           },
           ticks: {
+            stepSize,
             color: '#94a3b8',
             callback: (value: any) => {
-              if (value >= 1000000) return (value / 1000000).toFixed(0) + 'M';
-              if (value >= 1000) return (value / 1000).toFixed(0) + 'K';
-              return value;
+              const v = Number(value || 0);
+              if (v >= 1000000) {
+                const m = v / 1000000;
+                return (m % 1 === 0) ? `${m}M` : `${m.toFixed(1)}M`;
+              }
+              if (v >= 1000) return `${Math.round(v / 1000)}K`;
+              return v;
             }
           }
         },
