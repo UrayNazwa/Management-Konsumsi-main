@@ -21,12 +21,33 @@
 ### 📋 Prasyarat
 1. **Node.js 24** harus terinstal di komputer kamu
 2. **npm** (sudah termasuk dengan Node.js)
+3. **MySQL** harus terinstal dan dapat dijalankan
 
-### 🚀 Langkah 1: Jalankan Backend
+### 🚀 Langkah 1: Jalankan MySQL
+Sebelum menjalankan backend, pastikan service MySQL aktif.
+
+Di macOS dengan Homebrew:
+```bash
+brew services start mysql
+```
+
+Atau jika menggunakan instalasi MySQL lain:
+```bash
+mysql.server start
+```
+
+Cek koneksi:
+```bash
+mysql -u root -p
+```
+
+Jika MySQL tidak aktif, backend akan gagal saat startup.
+
+### 🚀 Langkah 2: Jalankan Backend
 1. Buka **Terminal Baru**
 2. Masuk ke direktori backend:
    ```bash
-   cd ~/Desktop/iyutonge/management\ konsumsi/backend
+   cd /Users/macintosh/Downloads/Management-Konsumsi-main/backend
    ```
 3. Install dependencies (jika belum):
    ```bash
@@ -41,17 +62,15 @@
    npm start
    ```
    - Backend akan berjalan di **http://localhost:3000**
-   - Pastikan MySQL sudah berjalan, karena backend menggunakan MySQL sebagai database.
 
-### 🚀 Langkah 2: Jalankan Frontend (Angular 21)
+### 🚀 Langkah 3: Jalankan Frontend (Angular 21)
 1. Buka **Terminal Baru** (jangan tutup terminal backend!)
 2. Masuk ke direktori frontend:
    ```bash
-   cd ~/Desktop/iyutonge/management\ konsumsi/frontend
+   cd /Users/macintosh/Downloads/Management-Konsumsi-main/frontend
    ```
 3. Install dependencies (jika belum):
    ```bash
-   rm -rf node_modules package-lock.json  # Membersihkan file lama
    npm install --legacy-peer-deps
    ```
 4. Jalankan frontend:
@@ -61,6 +80,24 @@
    - Frontend akan berjalan di **http://localhost:4200**
 
 > Pastikan MySQL sudah berjalan sebelum backend dijalankan.
+   Jika kamu menggunakan MySQL lokal, buka aplikasi MySQL atau jalankan        service       
+   MySQL terlebih dahulu. Contoh perintah di macOS:
+   ```bash
+   brew services start mysql
+   ```
+
+   Atau jika menggunakan server MySQL manual:
+   ```bash
+   mysql.server start
+   ``
+   
+   Setelah itu cek koneksi:
+
+   ```bash
+   mysql -u root -p
+   ```
+   
+> Jika sudah bisa login, backend siap dijalankan.
 
 ### 🎉 Selesai!
 Buka browser kamu dan akses **http://localhost:4200**
