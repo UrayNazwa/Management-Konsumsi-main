@@ -1,10 +1,10 @@
 # Management Konsumsi & Pokok
 
 ## Stack
-- **Backend**: Node.js 24 (vanilla, tanpa framework) + MySQL
-- **Frontend**: Angular 21 + PrimeNG 21
-- **Database**: MySQL
-- **Containerization**: Docker + Docker Compose
+- Backend: Node.js 24 (vanilla, tanpa framework) + MySQL
+- Frontend: Angular 21 + PrimeNG 21
+- Database: MySQL
+- Containerization: Docker + Docker Compose
 
 ## Features
 - Dashboard with monthly expense and consumption trends
@@ -19,9 +19,9 @@
 ## Cara Menjalankan Aplikasi (Local Development)
 
 ### 📋 Prasyarat
-1. **Node.js 24** harus terinstal di komputer kamu
-2. **npm** (sudah termasuk dengan Node.js)
-3. **MySQL** harus terinstal dan dapat dijalankan
+1. Node.js 24 harus terinstal di komputer kamu
+2. npm (sudah termasuk dengan Node.js)
+3. MySQL harus terinstal dan dapat dijalankan
 
 ### 🚀 Langkah 1: Jalankan MySQL
 Sebelum menjalankan backend, pastikan service MySQL aktif.
@@ -79,25 +79,6 @@ Jika MySQL tidak aktif, backend akan gagal saat startup.
    ```
    - Frontend akan berjalan di **http://localhost:4200**
 
-> Pastikan MySQL sudah berjalan sebelum backend dijalankan.
-   Jika kamu menggunakan MySQL lokal, buka aplikasi MySQL atau jalankan        service       
-   MySQL terlebih dahulu. Contoh perintah di macOS:
-   ```bash
-   brew services start mysql
-   ```
-
-   Atau jika menggunakan server MySQL manual:
-   ```bash
-   mysql.server start
-   ``
-   
-   Setelah itu cek koneksi:
-
-   ```bash
-   mysql -u root -p
-   ```
-   
-> Jika sudah bisa login, backend siap dijalankan.
 
 ### 🎉 Selesai!
 Buka browser kamu dan akses **http://localhost:4200**

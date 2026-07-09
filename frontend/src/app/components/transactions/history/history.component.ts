@@ -69,8 +69,8 @@ interface TransactionWithStock extends Transaction {
             [value]="filteredTransactions"
             responsiveLayout="scroll"
             scrollable="true"
-            scrollHeight="calc(var(--p-datatable-row-height) * 6)"
-            styleClass="p-datatable-striped scrollable-6-rows"
+            scrollHeight="18.75rem"
+            styleClass="p-datatable-striped history-scrollable"
           >
             <ng-template pTemplate="header">
               <tr>

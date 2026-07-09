@@ -221,6 +221,7 @@ body {
   max-height: calc(var(--p-datatable-row-height) * 5) !important;
   height: auto !important;
   overflow-y: auto !important;
+  overflow-y: auto !important;
 }
 
 .scrollable-6-rows .p-datatable-scrollable-body,
@@ -228,6 +229,21 @@ body {
   max-height: calc(var(--p-datatable-row-height) * 6) !important;
   height: auto !important;
   overflow-y: auto !important;
+}
+
+.history-scrollable {
+  --p-datatable-row-height: 3.75rem;
+}
+
+.history-scrollable .p-datatable-scrollable-body,
+.history-scrollable .p-datatable-scrollable-body-wrapper {
+  max-height: calc(var(--p-datatable-row-height) * 5) !important;
+  height: auto !important;
+  overflow-y: auto !important;
+}
+
+.history-scrollable .p-datatable-tbody > tr > td {
+  padding: 0.95rem 1rem !important;
 }
 
 .scrollable-4-rows .p-datatable-tbody > tr > td,
