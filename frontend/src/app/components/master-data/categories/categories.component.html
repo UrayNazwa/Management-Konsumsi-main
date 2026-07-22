@@ -14,11 +14,13 @@
 
   <!-- Card Container untuk Tabel -->
   <div class="bg-slate-900 rounded-2xl p-6 shadow-xl border border-slate-800">
-    <p-table 
-      [value]="categories" 
+    <p-table
+      [value]="categories"
       responsiveLayout="scroll"
-      styleClass="p-datatable-striped"
-    >
+      scrollable="true"
+      scrollHeight="26.25rem"
+      styleClass="p-datatable-striped history-scrollable history-scrollable-7"
+      >
       <ng-template pTemplate="header">
         <tr>
           <th>Nama Kategori</th>
@@ -31,15 +33,15 @@
           <td class="font-medium text-slate-200">{{ category.name }}</td>
           <td class="text-slate-300">{{ category.description }}</td>
           <td>
-            <div class="flex gap-2">
+            <div class="flex items-center gap-1">
               <p-button 
                 icon="pi pi-pencil" 
-                class="p-button-text" 
+                styleClass="p-button-text p-button-sm" 
                 (click)="openEditDialog(category)"
               />
               <p-button 
                 icon="pi pi-trash" 
-                class="p-button-text p-button-danger" 
+                styleClass="p-button-text p-button-danger p-button-sm" 
                 (click)="deleteCategory(category)"
               />
             </div>

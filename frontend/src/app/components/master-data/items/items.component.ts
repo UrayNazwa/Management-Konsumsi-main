@@ -52,7 +52,7 @@ import { Subscription } from 'rxjs';
           responsiveLayout="scroll"
           scrollable="true"
           scrollHeight="calc(var(--p-datatable-row-height) * 6)"
-          styleClass="p-datatable-striped scrollable-6-rows"
+          styleClass="p-datatable-striped history-scrollable scrollable-6-rows"
         >
           <ng-template pTemplate="header">
             <tr>
@@ -83,12 +83,12 @@ import { Subscription } from 'rxjs';
                 <div class="action-buttons">
                   <p-button 
                     icon="pi pi-pencil" 
-                    class="p-button-text" 
+                    styleClass="p-button-text p-button-sm" 
                     (click)="openEditDialog(item)"
                   ></p-button>
                   <p-button 
                     icon="pi pi-trash" 
-                    class="p-button-text p-button-danger" 
+                    styleClass="p-button-text p-button-danger p-button-sm" 
                     (click)="deleteItem(item)"
                   ></p-button>
                 </div>
@@ -217,6 +217,7 @@ export class ItemsComponent implements OnInit, OnDestroy {
   lowStockThreshold = 10;
   itemForm: FormGroup;
   private refreshSub?: Subscription;
+
 
   constructor(
     private apiService: ApiService,

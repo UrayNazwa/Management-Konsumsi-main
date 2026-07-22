@@ -45,8 +45,8 @@ import { Subscription } from 'rxjs';
           [value]="categories" 
           responsiveLayout="scroll"
           scrollable="true"
-          scrollHeight="calc(3.75rem * 5)"
-          styleClass="p-datatable-striped scrollable-5-rows"
+          scrollHeight="calc(var(--p-datatable-row-height) * 6)"
+          styleClass="p-datatable-striped history-scrollable scrollable-6-rows"
         >
           <ng-template pTemplate="header">
             <tr>
@@ -63,12 +63,12 @@ import { Subscription } from 'rxjs';
                 <div class="action-buttons">
                   <p-button 
                     icon="pi pi-pencil" 
-                    class="p-button-text" 
+                    styleClass="p-button-text p-button-sm" 
                     (click)="openEditDialog(category)"
                   ></p-button>
                   <p-button 
                     icon="pi pi-trash" 
-                    class="p-button-text p-button-danger" 
+                    styleClass="p-button-text p-button-danger p-button-sm" 
                     (click)="deleteCategory(category)"
                   ></p-button>
                 </div>
