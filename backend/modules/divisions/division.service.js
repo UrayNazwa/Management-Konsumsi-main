@@ -1,4 +1,4 @@
-const divisionRepository = require('../repositories/division.repository');
+const divisionRepository = require('./division.repository');
 
 class DivisionService {
   async getAllDivisions() {

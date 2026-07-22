@@ -88,7 +88,7 @@ interface MonthYear {
       <div class="table-card detail-card">
         <div class="table-card-header">Detail Penggunaan Barang</div>
         <div class="detail-card-body">
-          <p-table [value]="itemUsageDetail" responsiveLayout="scroll" scrollable="true" scrollHeight="18rem" styleClass="p-datatable-striped">
+          <p-table [value]="itemUsageDetail" responsiveLayout="scroll" scrollable="true" scrollHeight="18.75rem" styleClass="p-datatable-striped history-scrollable">
             <ng-template pTemplate="header">
               <tr>
                 <th>Barang</th>

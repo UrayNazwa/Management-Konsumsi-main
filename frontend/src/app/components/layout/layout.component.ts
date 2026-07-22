@@ -45,9 +45,6 @@ import { Transaction } from '../../models/transaction.model';
               <p>Konsumsi & Pokok</p>
             </div>
           </div>
-          <p-button icon="pi pi-times" 
-                    styleClass="p-button-text p-button-sm text-white"
-                    (onClick)="sidebarOpen = false" />
         </div>
         <p-panelmenu [model]="menuItems" [multiple]="false" class="sidebar-menu" />
         <div class="sidebar-footer">
@@ -56,7 +53,7 @@ import { Transaction } from '../../models/transaction.model';
       </div>
 
       <!-- Desktop Sidebar -->
-      <div class="sidebar sidebar-desktop">
+      <div class="sidebar sidebar-desktop" [class.sidebar-collapsed]="sidebarCollapsed">
         <div class="sidebar-header">
           <div class="sidebar-logo">
             <div class="logo-circle">
@@ -79,10 +76,9 @@ import { Transaction } from '../../models/transaction.model';
         <header class="main-header">
           <div class="header-content">
             <div class="header-left">
-              <p-button *ngIf="isMobile" 
-                        icon="pi pi-bars" 
+              <p-button icon="pi pi-bars" 
                         styleClass="p-button-text p-button-sm text-white"
-                        (onClick)="sidebarOpen = true" />
+                        (onClick)="toggleSidebar()" />
               <h2>PT.Gamma Persada</h2>
             </div>
             <div class="header-right">
@@ -114,6 +110,7 @@ import { Transaction } from '../../models/transaction.model';
 })
 export class LayoutComponent implements OnInit, OnDestroy {
   sidebarOpen = false;
+  sidebarCollapsed = false;
   isMobile = false;
   lowStockCount = 0;
   lowStockThreshold = 10;
@@ -179,6 +176,16 @@ export class LayoutComponent implements OnInit, OnDestroy {
     this.isMobile = window.innerWidth < 1024;
     if (!this.isMobile) {
       this.sidebarOpen = false;
+    } else {
+      this.sidebarCollapsed = false;
+    }
+  }
+
+  toggleSidebar() {
+    if (this.isMobile) {
+      this.sidebarOpen = !this.sidebarOpen;
+    } else {
+      this.sidebarCollapsed = !this.sidebarCollapsed;
     }
   }
 

@@ -20,11 +20,12 @@
 
 ### 📋 Prasyarat
 1. Node.js 24 harus terinstal di komputer kamu
-2. npm (sudah termasuk dengan Node.js)
+2. npm sudah terinstal
 3. MySQL harus terinstal dan dapat dijalankan
+4. Docker/Docker Compose hanya diperlukan jika ingin menggunakan container
 
 ### 🚀 Langkah 1: Jalankan MySQL
-Sebelum menjalankan backend, pastikan service MySQL aktif.
+Sebelum menjalankan backend, pastikan MySQL sudah aktif.
 
 Di macOS dengan Homebrew:
 ```bash
@@ -41,35 +42,45 @@ Cek koneksi:
 mysql -u root -p
 ```
 
-Jika MySQL tidak aktif, backend akan gagal saat startup.
+> Jika MySQL berjalan dengan user dan password berbeda, sesuaikan environment variable pada backend.
 
 ### 🚀 Langkah 2: Jalankan Backend
-1. Buka **Terminal Baru**
+1. Buka terminal baru
 2. Masuk ke direktori backend:
    ```bash
    cd /Users/macintosh/Downloads/Management-Konsumsi-main/backend
    ```
-3. Install dependencies (jika belum):
+3. Install dependency backend:
    ```bash
    npm install
    ```
-4. Hentikan proses yang memakai port 3000 (jika ada):
-   ```bash
-   lsof -ti :3000 | xargs kill -9
-   ```
-5. Jalankan backend:
+4. Jalankan backend:
    ```bash
    npm start
    ```
-   - Backend akan berjalan di **http://localhost:3000**
 
-### 🚀 Langkah 3: Jalankan Frontend (Angular 21)
-1. Buka **Terminal Baru** (jangan tutup terminal backend!)
+Backend akan berjalan di: **http://localhost:3000**
+
+#### Konfigurasi Database Backend
+Backend membaca konfigurasi dari environment variables:
+- `DB_HOST` (default: `localhost`)
+- `DB_PORT` (default: `3306`)
+- `DB_USER` (default: `root`)
+- `DB_PASSWORD` (default: `passwordbaru`)
+- `DB_NAME` (default: `management_konsumsi`)
+
+Jika ingin menjalankan dengan konfigurasi custom, jalankan:
+```bash
+DB_HOST=localhost DB_PORT=3306 DB_USER=root DB_PASSWORD=your_password DB_NAME=management_konsumsi npm start
+```
+
+### 🚀 Langkah 3: Jalankan Frontend (Angular)
+1. Buka terminal baru
 2. Masuk ke direktori frontend:
    ```bash
    cd /Users/macintosh/Downloads/Management-Konsumsi-main/frontend
    ```
-3. Install dependencies (jika belum):
+3. Install dependency frontend:
    ```bash
    npm install --legacy-peer-deps
    ```
@@ -77,31 +88,40 @@ Jika MySQL tidak aktif, backend akan gagal saat startup.
    ```bash
    npm start
    ```
-   - Frontend akan berjalan di **http://localhost:4200**
 
+Frontend akan berjalan di: **http://localhost:4200**
 
 ### 🎉 Selesai!
-Buka browser kamu dan akses **http://localhost:4200**
+Buka browser dan akses **http://localhost:4200**
 
 ---
 ## 🐳 Cara Menjalankan dengan Docker Compose
 
 ### 📋 Prasyarat
-1. **Docker Desktop** harus terinstal dan berjalan
+1. Docker Desktop terinstal dan berjalan
+2. Docker Compose tersedia
 
 ### 🚀 Langkah-langkah
-1. Buka Terminal
+1. Buka terminal
 2. Masuk ke direktori proyek:
    ```bash
-   cd ~/Desktop/iyutonge/management\ konsumsi
+   cd /Users/macintosh/Downloads/Management-Konsumsi-main
    ```
-3. Build dan jalankan semua container:
+3. Build dan jalankan semua service:
    ```bash
    docker-compose up -d --build
    ```
-4. Tunggu proses selesai, kemudian akses:
-   - Frontend: **http://localhost:4200**
-   - Backend API: **http://localhost:3000**
+
+Service akan dijalankan sebagai:
+- MySQL: `management-konsumsi-mysql`
+- Backend: `management-konsumsi-backend`
+- Frontend: `management-konsumsi-frontend`
+
+Setelah container ready, akses:
+- Frontend: **http://localhost:4200**
+- Backend API: **http://localhost:3001**
+
+> Catatan: Docker Compose memetakan port backend container ke host `3001`, sementara aplikasi di container tetap berjalan di `3000`.
 
 ### 🛑 Menghentikan Container
 ```bash
@@ -110,13 +130,27 @@ docker-compose down
 
 ---
 ## 📡 API Endpoints
-- `GET /api/dashboard` - Get dashboard data (opsional: `?year=2026&month=7`)
-- `GET/POST/PUT/DELETE /api/items` - Manage items
-- `GET/POST/PUT/DELETE /api/categories` - Manage categories
-- `GET/POST/PUT/DELETE /api/divisions` - Manage divisions
-- `GET/POST/PUT/DELETE /api/transactions` - Manage transactions
+- `GET /api/dashboard` - Ambil data dashboard
+- `GET /api/items` - Daftar barang
+- `POST /api/items` - Tambah barang
+- `PUT /api/items/:id` - Update barang
+- `DELETE /api/items/:id` - Hapus barang
+- `GET /api/categories` - Daftar kategori
+- `POST /api/categories` - Tambah kategori
+- `PUT /api/categories/:id` - Update kategori
+- `DELETE /api/categories/:id` - Hapus kategori
+- `GET /api/divisions` - Daftar divisi
+- `POST /api/divisions` - Tambah divisi
+- `PUT /api/divisions/:id` - Update divisi
+- `DELETE /api/divisions/:id` - Hapus divisi
+- `GET /api/transactions` - Daftar transaksi
+- `POST /api/transactions` - Tambah transaksi
+- `PUT /api/transactions/:id` - Update transaksi
+- `DELETE /api/transactions/:id` - Hapus transaksi
 
 ---
 ## 💡 Catatan Penting
-- **MySQL**: Backend menggunakan MySQL. Pastikan service MySQL aktif dan koneksi database sudah dikonfigurasi sebelum menjalankan backend.
-- **Angular 21**: Frontend menggunakan Angular 21 dengan PrimeNG 21. Pastikan kamu menjalankan `npm install --legacy-peer-deps` untuk menghindari konflik dependency.
+- Backend akan membuat database dan tabel secara otomatis jika belum ada.
+- Untuk mode local, pastikan MySQL berjalan sebelum menjalankan backend.
+- Jika menggunakan Docker Compose, MySQL akan dijalankan di container dan tidak perlu MySQL lokal.
+- Jika Anda menggunakan password MySQL berbeda, sesuaikan environment variable `DB_PASSWORD` pada Docker Compose atau local backend.

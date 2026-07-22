@@ -1,7 +1,7 @@
-const itemRepository = require('../repositories/item.repository');
-const transactionRepository = require('../repositories/transaction.repository');
-const categoryRepository = require('../repositories/category.repository');
-const divisionRepository = require('../repositories/division.repository');
+const itemRepository = require('../items/item.repository');
+const transactionRepository = require('../transactions/transaction.repository');
+const categoryRepository = require('../categories/category.repository');
+const divisionRepository = require('../divisions/division.repository');
 
 class DashboardService {
   async getDashboardData(year, month) {

@@ -88,7 +88,7 @@ interface YearOption {
       <div class="table-card detail-card">
         <div class="table-card-header">Detail Pengeluaran per Divisi</div>
         <div class="detail-card-body">
-          <p-table [value]="divisionDetail" responsiveLayout="scroll" scrollable="true" scrollHeight="18rem" styleClass="p-datatable-striped">
+          <p-table [value]="divisionDetail" responsiveLayout="scroll" scrollable="true" scrollHeight="26.25rem" styleClass="p-datatable-striped history-scrollable history-scrollable-7">
             <ng-template pTemplate="header">
               <tr>
                 <th>Divisi</th>
@@ -98,15 +98,14 @@ interface YearOption {
               </tr>
             </ng-template>
             <ng-template pTemplate="body" let-item>
-              <tr class="table-row-hover">
-                <td class="table-cell-strong">{{ item.name }}</td>
-                <td class="text-muted">{{ item.transactionCount }}</td>
-                <td class="table-cell-strong">{{ formatCurrency(item.total) }}</td>
+              <tr>
+                <td class="font-medium text-slate-200">{{ item.name }}</td>
+                <td class="text-slate-300">{{ item.transactionCount }}</td>
+                <td class="font-medium text-slate-200">{{ formatCurrency(item.total) }}</td>
                 <td>
                   <p-button 
-                    label="Lihat Detail" 
                     icon="pi pi-eye" 
-                    class="p-button-text"
+                    styleClass="p-button-text p-button-sm"
                     (click)="openDetail(item.name)"
                   ></p-button>
                 </td>
@@ -114,9 +113,9 @@ interface YearOption {
             </ng-template>
             <ng-template pTemplate="footer">
               <tr>
-                <td class="table-cell-strong">Total</td>
-                <td class="table-cell-strong">{{ totalTransactions }}</td>
-                <td class="table-cell-strong">{{ formatCurrency(totalYearlyExpense) }}</td>
+                <td class="font-medium text-slate-200">Total</td>
+                <td class="font-medium text-slate-200">{{ totalTransactions }}</td>
+                <td class="font-medium text-slate-200">{{ formatCurrency(totalYearlyExpense) }}</td>
                 <td></td>
               </tr>
             </ng-template>
@@ -144,7 +143,7 @@ interface YearOption {
         <p class="dialog-text">Tidak ada transaksi untuk divisi ini di tahun {{ selectedYear }}</p>
       </div>
       <div *ngIf="detailTransactions.length > 0" class="dialog-table">
-        <p-table [value]="detailTransactions" responsiveLayout="scroll" styleClass="p-datatable-striped">
+        <p-table [value]="detailTransactions" responsiveLayout="scroll" scrollable="true" scrollHeight="26.25rem" styleClass="p-datatable-striped history-scrollable history-scrollable-7">
           <ng-template pTemplate="header">
             <tr>
               <th>Tanggal</th>
@@ -154,11 +153,11 @@ interface YearOption {
             </tr>
           </ng-template>
           <ng-template pTemplate="body" let-tx>
-            <tr class="table-row-hover">
-              <td class="table-cell-strong">{{ tx.date }}</td>
-              <td class="table-cell-strong">{{ tx.itemName }}</td>
-              <td class="text-muted">{{ tx.quantity }}</td>
-              <td class="table-cell-strong">{{ formatCurrency(tx.total) }}</td>
+            <tr>
+              <td class="font-medium text-slate-200">{{ tx.date }}</td>
+              <td class="font-medium text-slate-200">{{ tx.itemName }}</td>
+              <td class="text-slate-300">{{ tx.quantity }}</td>
+              <td class="font-medium text-slate-200">{{ formatCurrency(tx.total) }}</td>
             </tr>
           </ng-template>
         </p-table>
@@ -410,7 +409,7 @@ export class DivisionReportComponent implements OnInit, OnDestroy {
 
     this.monthlyChartOptions = {
       maintainAspectRatio: false,
-      aspectRatio: 1.5,
+      aspectRatio: 3,
       plugins: {
         legend: {
           display: true,

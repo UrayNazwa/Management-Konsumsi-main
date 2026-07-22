@@ -67,8 +67,8 @@ import { Subscription } from 'rxjs';
             [value]="currentMonthTransactions"
             responsiveLayout="scroll"
             scrollable="true"
-            scrollHeight="calc(var(--p-datatable-row-height) * 5)"
-            styleClass="p-datatable-striped scrollable-5-rows"
+            scrollHeight="22.5rem"
+            styleClass="p-datatable-striped history-scrollable"
           >
             <ng-template pTemplate="header">
               <tr>
@@ -95,12 +95,12 @@ import { Subscription } from 'rxjs';
                   <div class="action-buttons">
                     <p-button 
                       icon="pi pi-pencil" 
-                      class="p-button-text" 
+                      styleClass="p-button-text p-button-sm" 
                       (click)="openEditDialog(transaction)"
                     ></p-button>
                     <p-button 
                       icon="pi pi-trash" 
-                      class="p-button-text p-button-danger" 
+                      styleClass="p-button-text p-button-danger p-button-sm" 
                       (click)="deleteTransaction(transaction)"
                     ></p-button>
                   </div>

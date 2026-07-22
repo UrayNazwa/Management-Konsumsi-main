@@ -1,5 +1,5 @@
-const dashboardService = require('../services/dashboard.service');
-const { sendJSON } = require('../config/response');
+const dashboardService = require('./dashboard.service');
+const { sendJSON } = require('../../config/response');
 const url = require('url');
 
 class DashboardController {

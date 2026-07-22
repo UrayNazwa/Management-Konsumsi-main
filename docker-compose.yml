@@ -1,4 +1,19 @@
 services:
+  mysql:
+    image: mysql:8.0
+    container_name: management-konsumsi-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: passwordbaru
+      MYSQL_DATABASE: management_konsumsi
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - app-network
+    restart: unless-stopped
+
   backend:
     build:
       context: ./backend
@@ -6,8 +21,14 @@ services:
     container_name: management-konsumsi-backend
     ports:
       - "3001:3000"
-    volumes:
-      - ./backend/data:/app/data
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_USER: root
+      DB_PASSWORD: passwordbaru
+      DB_NAME: management_konsumsi
+    depends_on:
+      - mysql
     networks:
       - app-network
     restart: unless-stopped
@@ -24,6 +45,9 @@ services:
     networks:
       - app-network
     restart: unless-stopped
+
+volumes:
+  mysql_data:
 
 networks:
   app-network:

@@ -10,8 +10,7 @@ RUN npm ci
 
 COPY . .
 
-RUN npm run build
-
+# Backend ini tidak memerlukan build step karena dijalankan langsung oleh Node.js
 RUN mkdir -p /app/data && chmod 777 /app/data
 
 EXPOSE 3000

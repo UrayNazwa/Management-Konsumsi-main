@@ -1,4 +1,4 @@
-const transactionRepository = require('../repositories/transaction.repository');
+const transactionRepository = require('./transaction.repository');
 
 class TransactionService {
   async getAllTransactions() {

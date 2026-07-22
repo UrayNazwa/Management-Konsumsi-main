@@ -1,5 +1,5 @@
-const transactionService = require('../services/transaction.service');
-const { parseBody, sendJSON } = require('../config/response');
+const transactionService = require('./transaction.service');
+const { parseBody, sendJSON } = require('../../config/response');
 
 class TransactionController {
   async getAll(req, res) {

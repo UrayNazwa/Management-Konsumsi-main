@@ -1,5 +1,5 @@
-const categoryService = require('../services/category.service');
-const { parseBody, sendJSON } = require('../config/response');
+const categoryService = require('./category.service');
+const { parseBody, sendJSON } = require('../../config/response');
 
 class CategoryController {
   async getAll(req, res) {

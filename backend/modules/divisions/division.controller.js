@@ -1,5 +1,5 @@
-const divisionService = require('../services/division.service');
-const { parseBody, sendJSON } = require('../config/response');
+const divisionService = require('./division.service');
+const { parseBody, sendJSON } = require('../../config/response');
 
 class DivisionController {
   async getAll(req, res) {

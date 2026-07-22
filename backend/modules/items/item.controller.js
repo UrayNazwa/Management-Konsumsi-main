@@ -1,5 +1,5 @@
-const itemService = require('../services/item.service');
-const { parseBody, sendJSON } = require('../config/response');
+const itemService = require('./item.service');
+const { parseBody, sendJSON } = require('../../config/response');
 
 class ItemController {
   async getAll(req, res) {

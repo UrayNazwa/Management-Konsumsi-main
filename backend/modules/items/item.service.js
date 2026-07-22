@@ -1,4 +1,4 @@
-const itemRepository = require('../repositories/item.repository');
+const itemRepository = require('./item.repository');
 
 class ItemService {
   async getAllItems() {
